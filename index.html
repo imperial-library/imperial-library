@@ -12,9 +12,6 @@
   
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Direct Client-Side PDF Engine (Zero External Redirects) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
   <style>
     :root {
@@ -363,67 +360,30 @@
       letter-spacing: 0.5px;
     }
 
-    /* Actions */
-    .actions-container {
-      display: flex;
-      gap: 0.6rem;
-      margin-bottom: 1.2rem;
-      flex-wrap: wrap;
-    }
-
-    .action-btn {
-      flex: 1;
-      min-width: 140px;
-      padding: 0.75rem 0.8rem;
+    .btn-read-online {
+      background: linear-gradient(135deg, #0d1b2a, #1b4965);
+      color: #ffffff;
+      border: 1px solid var(--gold-border);
+      padding: 0.8rem;
       border-radius: 10px;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: 700;
       cursor: pointer;
       text-align: center;
-      border: none;
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
       transition: all 0.2s ease;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 3px 10px rgba(13, 27, 42, 0.15);
       font-family: inherit;
     }
 
-    .btn-read-online {
-      background: #ffffff;
-      color: var(--royal-navy);
-      border: 1.5px solid var(--gold-border);
-      width: 100%;
-      flex-basis: 100%;
-      margin-bottom: 0.2rem;
-    }
-
     .btn-read-online:hover {
-      background: var(--gold-soft);
-      border-color: var(--gold-primary);
-    }
-
-    .btn-pdf-en {
-      background: linear-gradient(135deg, #0d1b2a, #1b4965);
-      color: #ffffff;
-      box-shadow: 0 3px 10px rgba(13, 27, 42, 0.2);
-    }
-
-    .btn-pdf-en:hover {
       box-shadow: 0 6px 16px rgba(13, 27, 42, 0.35);
       transform: translateY(-2px);
       color: var(--gold-bright);
-    }
-
-    .btn-pdf-ar {
-      background: linear-gradient(135deg, #b8860b, #d4af37);
-      color: #ffffff;
-      box-shadow: 0 3px 10px rgba(184, 134, 11, 0.25);
-    }
-
-    .btn-pdf-ar:hover {
-      box-shadow: 0 6px 16px rgba(184, 134, 11, 0.4);
-      transform: translateY(-2px);
     }
 
     .status-container {
@@ -455,23 +415,23 @@
     }
 
     .status-btn.active-read {
-      background: #dcfce7;
-      border-color: #22c55e;
-      color: #15803d;
+      background: #dcfce7 !important;
+      border-color: #22c55e !important;
+      color: #15803d !important;
       font-weight: 700;
     }
 
     .status-btn.active-reading {
-      background: #fef3c7;
-      border-color: #f59e0b;
-      color: #b45309;
+      background: #fef3c7 !important;
+      border-color: #f59e0b !important;
+      color: #b45309 !important;
       font-weight: 700;
     }
 
     .status-btn.active-unread {
-      background: #fee2e2;
-      border-color: #ef4444;
-      color: #b91c1c;
+      background: #fee2e2 !important;
+      border-color: #ef4444 !important;
+      color: #b91c1c !important;
       font-weight: 700;
     }
 
@@ -550,7 +510,7 @@
       letter-spacing: 1px;
     }
 
-    /* Modal Reader (Never leaves the website) */
+    /* Full-Screen In-App Reader Modal */
     .reader-modal {
       display: none;
       position: fixed;
@@ -624,7 +584,6 @@
 </head>
 <body>
 
-  <!-- Language Switcher Bar -->
   <div class="lang-switcher-container">
     <button class="lang-btn" onclick="toggleLanguage()">
       <span id="langFlag">🇸🇦</span>
@@ -680,7 +639,7 @@
   </div>
 
   <div class="footer-note">
-    <p id="uiFooterNote">The Grand Imperial Library • Books download directly to your laptop with zero external redirects 🏛️✨</p>
+    <p id="uiFooterNote">The Grand Imperial Library • All reading progress and on-site books are saved locally on your computer 🏛✨</p>
   </div>
 
   <!-- On-Site Reader Modal -->
@@ -706,8 +665,8 @@
         descAr: "راسبولينيكوف يرتكب جريمة قتل بناءً على نظريته الفوقية بأن العباقرة فوق القانون، ليدخل في عذاب ضمير مدمر يقوده إلى رحلة الاعتراف والتوبة في سيبيريا.",
         insight: "True punishment is not institutional confinement, but the unbearable psychological isolation from the human race.",
         insightAr: "العقاب الحقيقي ليس قيود السجن وقوانينه، بل العزلة النفسية المرعبة والانفصال القاتل عن البشرية.",
-        textEn: `PART I — CHAPTER I\n\nOn an exceptionally hot evening early in July a young man came out of the garret in which he lodged in S. Place and walked slowly, as though in hesitation, towards K. bridge.\n\nHe had successfully avoided meeting his landlady on the stairs. His garret was under the roof of a high, five-storied house and was more like a cupboard than a room. The landlady who provided him with garret, dinners, and attendance, lived on the floor below, and every time he went out he was obliged to pass her kitchen, the door of which invariably stood open. And each time, as he passed, the young man had a sick, frightened feeling, which made him scowl and feel ashamed. He was hopelessly in debt to his landlady, and was afraid of meeting her.\n\n"I want to attempt a thing like that and am frightened by these trifles," he thought, with an odd smile. "Hm... yes, all is in a man’s hands and he lets it all slip from cowardice... that’s an axiom. It would be interesting to know what it is men are most afraid of. Taking a new step, uttering a new word is what they fear most..."\n\nHe had not far to go; he knew indeed how many steps it was from the gate of his lodging house: exactly seven hundred and thirty. He had counted them once when he had been walking and lost in dreams. At that time he had not believed in these dreams, and had only tantalized himself with their hideous boldness. Now a month later, he began to look at them differently...`,
-        textAr: `الجزء الأول — الفصل الأول\n\nفي أوائل شهر يوليو، وفي وقت شديد القيظ من المساء، غادر شاب غرفته الصغيرة الواقعة تحت السقف في زقاق "س"، وسار متمهلاً نحو جسر "ك"، وكأنه يتردد في خطاه.\n\nوقد نجح في تفادي لقاء صاحب البيت على الدرج. كانت غرفته الصغيرة تقع تحت سقف بناية عالية مؤلفة من خمس طبقات، وكانت أشبه بخزانة منها بغرفة حقيقية. وكانت صاحبة البيت التي تمنحه هذه الغرفة والطعام والخدمة تقيم في الطابق الأسفل، فكان عليه في كل مرة يخرج فيها أن يمر أمام مطبخها الذي كان بابه مفتوحاً على الدوام. وفي كل مرة كان الشاب يمر به، كان يشعر بخوف مريض يملأه خجلاً؛ إذ كان مديناً لها بمبالغ طائلة ويخشى لقاءها.\n\nوحدث نفسه بابتسامة غريبة: "أنا الذي أريد أن أقدم على هذا الأمر الخطير، وأخاف من هذه التوافه؟! نعم، كل شيء في يد الإنسان ولكنه يدعه يضيع من بين أصابعه بسبب الجبن... تلك حقيقة بديهية. وما الذي يخافه الناس أكثر من غيره؟ إنهم يخافون اتخاذ خطوة جديدة، أو النطق بكلمة جديدة!"`
+        textEn: "PART I — CHAPTER I\n\nOn an exceptionally hot evening early in July a young man came out of the garret in which he lodged in S. Place and walked slowly, as though in hesitation, towards K. bridge.\n\nHe had successfully avoided meeting his landlady on the stairs. His garret was under the roof of a high, five-storied house and was more like a cupboard than a room. The landlady who provided him with garret, dinners, and attendance, lived on the floor below, and every time he went out he was obliged to pass her kitchen, the door of which invariably stood open. And each time, as he passed, the young man had a sick, frightened feeling, which made him scowl and feel ashamed. He was hopelessly in debt to his landlady, and was afraid of meeting her.\n\n'I want to attempt a thing like that and am frightened by these trifles,' he thought, with an odd smile. 'Hm... yes, all is in a man’s hands and he lets it all slip from cowardice... that’s an axiom. It would be interesting to know what it is men are most afraid of. Taking a new step, uttering a new word is what they fear most...'\n\nHe had not far to go; he knew indeed how many steps it was from the gate of his lodging house: exactly seven hundred and thirty. He had counted them once when he had been walking and lost in dreams.",
+        textAr: "الجزء الأول — الفصل الأول\n\nفي أوائل شهر يوليو، وفي وقت شديد القيظ من المساء، غادر شاب غرفته الصغيرة الواقعة تحت السقف في زقاق 'س'، وسار متمهلاً نحو جسر 'ك'، وكأنه يتردد في خطاه.\n\nوقد نجح في تفادي لقاء صاحب البيت على الدرج. كانت غرفته الصغيرة تقع تحت سقف بناية عالية مؤلفة من خمس طبقات، وكانت أشبه بخزانة منها بغرفة حقيقية. وكانت صاحبة البيت التي تمنحه هذه الغرفة والطعام والخدمة تقيم في الطابق الأسفل، فكان عليه في كل مرة يخرج فيها أن يمر أمام مطبخها الذي كان بابه مفتوحاً على الدوام. وفي كل مرة كان الشاب يمر به، كان يشعر بخوف مريض يملأه خجلاً؛ إذ كان مديناً لها بمبالغ طائلة ويخشى لقاءها.\n\nوحدث نفسه بابتسامة غريبة: 'أنا الذي أريد أن أقدم على هذا الأمر الخطير، وأخاف من هذه التوافه؟! نعم، كل شيء في يد الإنسان ولكنه يدعه يضيع من بين أصابعه بسبب الجبن... تلك حقيقة بديهية. وما الذي يخافه الناس أكثر من غيره؟ إنهم يخافون اتخاذ خطوة جديدة، أو النطق بكلمة جديدة!'"
       },
       {
         id: "b2", cat: "dostoevsky",
@@ -719,8 +678,8 @@
         descAr: "رواية فلسفية ملحمية تتناول الصراع الأخلاقي بين الشك والإيمان، والمسؤولية الجماعية عن الشر من خلال مصائر الإخوة ديمتري، إيفان، وأليوشا.",
         insight: "'If God does not exist, everything is permitted.' True transcendence lies in unconditional active love.",
         insightAr: "إن لم يكن الله موجوداً فكل شيء مباح. الخلاص البشري الحقيقي يكمن في المحبة الفعالة غير المشروطة.",
-        textEn: `BOOK V — CHAPTER V: THE GRAND INQUISITOR\n\n"Even this must have a preface," Ivan laughed. "My poem is in verse, if you will, but I’ll tell you the plot. The action takes place in Spain, in Seville, in the most terrible period of the Inquisition, when fires were lighted every day to the glory of God, and in the splendid auto-da-fé the wicked heretics were burnt.\n\nHe came softly, unobserved, and yet, strange to say, everyone recognized Him. The people are drawn to Him by an irresistible force, they gather round Him, they follow Him. He walks quietly among them with a gentle smile of infinite compassion. The sun of love burns in His heart, light and power shine from His eyes, and their radiance, shed on the people, stirs their hearts with responsive love.\n\nAt that moment the Grand Inquisitor, the Cardinal himself, enters the cathedral square. He is an old man, nearly ninety, tall and erect, with a withered face and sunken eyes, in which there is still a fiery gleam. He sees everything; his face darkens with sinister wrath. He points his finger, and commands the guards to seize Him."`,
-        textAr: `الكتاب الخامس — الفصل الخامس: المفتش الأكبر\n\nضحك إيفان وقال: "حتى هذه الرواية بحاجة إلى مقدمة! تدور الحوادث في إسبانيا، في إشبيلية، في أرهب عصور محاكم التفتيش، حين كانت المحارق تُشعل كل يوم لمجد الله، ويُحرق الهراطقة في أعياد الإيمان المهيبة.\n\nونزل هو إلى الأرض بهدوء دون أن يراه أحد، ومع ذلك فقد عرفه الجميع في الحال! كان الناس ينجذبون إليه بقوة لا تقاوم، ويتحلقون حوله ويتبعونه. كان يمر بينهم بابتسامة هادئة تفيض رحمة لا نهائية، ونور المحبة يشع من عينيه ليلمس قلوب الحائرين.\n\nوفي تلك اللحظة بالذات، ظهر في ساحة الكاتدرائية الكاردينال المفتش الأكبر نفسه. شيخ ناهز التسعين، طويل القامة، وجهه منكمش وعيناه غائرتان ولكن يشتعل فيهما بريق يشبه الشرار. رأى كل شيء، فقطب حاجبيه بغضب صارم، وأشار بإصبعه إلى الحراس قائلاً: خذوه واقبضوا عليه!"`
+        textEn: "BOOK V — CHAPTER V: THE GRAND INQUISITOR\n\n'Even this must have a preface,' Ivan laughed. 'My poem is in verse, if you will, but I’ll tell you the plot. The action takes place in Spain, in Seville, in the most terrible period of the Inquisition, when fires were lighted every day to the glory of God, and in the splendid auto-da-fé the wicked heretics were burnt.\n\nHe came softly, unobserved, and yet, strange to say, everyone recognized Him. The people are drawn to Him by an irresistible force, they gather round Him, they follow Him. He walks quietly among them with a gentle smile of infinite compassion. The sun of love burns in His heart, light and power shine from His eyes, and their radiance, shed on the people, stirs their hearts with responsive love.\n\nAt that moment the Grand Inquisitor, the Cardinal himself, enters the cathedral square. He is an old man, nearly ninety, tall and erect, with a withered face and sunken eyes, in which there is still a fiery gleam. He sees everything; his face darkens with sinister wrath. He points his finger, and commands the guards to seize Him.'",
+        textAr: "الكتاب الخامس — الفصل الخامس: المفتش الأكبر\n\nضحك إيفان وقال: 'حتى هذه الرواية بحاجة إلى مقدمة! تدور الحوادث في إسبانيا، في إشبيلية، في أرهب عصور محاكم التفتيش، حين كانت المحارق تُشعل كل يوم لمجد الله، ويُحرق الهراطقة في أعياد الإيمان المهيبة.\n\nونزل هو إلى الأرض بهدوء دون أن يراه أحد، ومع ذلك فقد عرفه الجميع في الحال! كان الناس ينجذبون إليه بقوة لا تقاوم، ويتحلقون حوله ويتبعونه. كان يمر بينهم بابتسامة هادئة تفيض رحمة لا نهائية، ونور المحبة يشع من عينيه ليلمس قلوب الحائرين.\n\nوفي تلك اللحظة بالذات، ظهر في ساحة الكاتدرائية الكاردينال المفتش الأكبر نفسه. شيخ ناهز التسعين، طويل القامة، وجهه منكمش وعيناه غائرتان ولكن يشتعل فيهما بريق يشبه الشرار. رأى كل شيء، فقطب حاجبيه بغضب صارم، وأشار بإصبعه إلى الحراس قائلاً: خذوه واقبضوا عليه!'"
       },
       {
         id: "b3", cat: "dostoevsky",
@@ -732,8 +691,8 @@
         descAr: "الأمير ميشكين الطاهر العائد إلى بطرسبرغ يتعامل مع العالم ببراءة مطلقة وخير خالص، فيعتبره المجتمع الراقي معتوهاً ويقود صفاء روحه إلى مأساة.",
         insight: "Absolute moral goodness appears as foolishness to a world dominated by pride, avarice, and materialism.",
         insightAr: "الخير المطلق والنقاء الروحي يبدوان كحماقة في عالم يحكمه الجشع والمادة والمظاهر الزائفة.",
-        textEn: `PART I — CHAPTER I\n\nTowards the end of November, during a warm thaw, at around nine o'clock in the morning, a train of the Warsaw railway was approaching Petersburg at full speed. The morning was so damp and misty that it was only with great difficulty that the day succeeded in breaking; and it was impossible to see anything through the carriage windows beyond a few yards.\n\nIn one of the third-class compartments, two passengers found themselves seated facing each other near the window. Both were young men, both were simply dressed, and both were remarkable in appearance. One was a young man of twenty-six or seven, of middle height, with thick blond hair, hollow cheeks, and a thin, pointed, almost white beard. His eyes were large, blue, and having a fixed, gentle, but heavy expression—an expression full of that strange look by which some persons are able to recognize sufferers from epilepsy at first sight.`,
-        textAr: `الجزء الأول — الفصل الأول\n\nفي أواخر نوفمبر، وأثناء فترة ذوبان الجليد، وعند الساعة التاسعة صباحاً تقريباً، كان قطار سكة حديد وارسو يقترب من بطرسبرغ بأقصى سرعته. كان الطقس رطباً يلفه الضباب حتى كان من الصعب تمييز معالم الطريق من نوافذ العربات.\n\nوفي إحدى مقصورات الدرجة الثالثة، وجد راكبان نفسيهما جالسين وجهاً لوجه بجوار النافذة. كلاهما شاب في مقتبل العمر، وكلاهما بسيط الملبس ولكن ملامحهما كانت لافتة للنظر. أحدهما شاب في السابعة والعشرين من عمره، متوسط القامة، شعره أشقر كثيف وخدوده غائرة وله لحية خفيفة بيضاء تقريباً. أما عيناه فكانتا زرقاوين واسعتين تفيضان بنظرة وديعة وثابتة ولكنها تحمل ذلك التعبير الغريب الذي يتعرف به الناس على المصابين بداء الصرع من أول نظرة.`
+        textEn: "PART I — CHAPTER I\n\nTowards the end of November, during a warm thaw, at around nine o'clock in the morning, a train of the Warsaw railway was approaching Petersburg at full speed. The morning was so damp and misty that it was only with great difficulty that the day succeeded in breaking; and it was impossible to see anything through the carriage windows beyond a few yards.\n\nIn one of the third-class compartments, two passengers found themselves seated facing each other near the window. Both were young men, both were simply dressed, and both were remarkable in appearance. One was Prince Lev Nikolayevich Myshkin, a young man of twenty-six, of middle height, with thick blond hair, hollow cheeks, and large gentle blue eyes.",
+        textAr: "الجزء الأول — الفصل الأول\n\nفي أواخر نوفمبر، وأثناء فترة ذوبان الجليد، وعند الساعة التاسعة صباحاً تقريباً، كان قطار سكة حديد وارسو يقترب من بطرسبرغ بأقصى سرعته. كان الطقس رطباً يلفه الضباب حتى كان من الصعب تمييز معالم الطريق من نوافذ العربات.\n\nوفي إحدى مقصورات الدرجة الثالثة، وجد راكبان نفسيهما جالسين وجهاً لوجه بجوار النافذة. كلاهما شاب في مقتبل العمر، وكلاهما بسيط الملبس ولكن ملامحهما كانت لافتة للنظر. أحدهما الأمير ليف نيكولايفيتش ميشكين، شاب في السادسة والعشرين، متوسط القامة، شعره أشقر وعيناه زرقاوان واسعتان تفيضان بطيبة ونقاء خالص."
       },
       {
         id: "b4", cat: "dostoevsky",
@@ -745,674 +704,8 @@
         descAr: "اعترافات رجل القبو المعقد المنعزل الذي يتحدى النفعية والعقلانية الصارمة، مؤكداً أن الإنسان مستعد لتدمير كل رفاهية لحماية إرادته الحرة.",
         insight: "Human beings desire freedom and personal autonomy above calculated self-interest, even if that freedom leads to destruction.",
         insightAr: "الإنسان يفضل ممارسة إرادته الفردية الحرة على أي سعادة مادية مفروضة عليه حسابياً.",
-        textEn: `PART I — UNDERGROUND\n\nI am a sick man... I am a spiteful man. I am an unattractive man. I believe my liver is diseased. However, I know nothing at all about my disease, and do not know for certain what ails me. I don't consult a doctor for it, and never have, though I have a respect for medicine and doctors. Besides, I am extremely superstitious, sufficiently so to respect medicine, anyway. No, I refuse to consult a doctor from spite. That you probably will not understand. Well, I understand it, though. Of course, I can't explain who it is precisely that I am mortifying in this case by my spite:The reason Archive.org showed that black error screen is simple: **Archive.org blocks direct hotlinking**. When a website tries to force a download from their servers, Archive.org detects the external click, redirects your browser to their domain, and throws that metadata error.
-
-Browser security rules also dictate that **no browser will ever silently download a file from an external website**. If a link points to another site (like Archive.org), the browser *always* redirects the tab.
-
-To get a **100% direct download with zero redirects and zero external websites**, there are two approaches:
-
----
-
-### How Direct Downloads Actually Work on Websites
-
-1. **Option A (Self-Hosted on GitHub — Best for Real 500-Page Books):**  
-   You create a folder named `books` in your GitHub repository and upload your full `.pdf` files there (e.g., `books/crime-and-punishment.pdf`). When linked locally (`href="books/..." download`), the browser **downloads it instantly with zero redirects** because the file belongs to your own site.
-2. **Option B (In-Browser Client Generation — Works Immediately):**  
-   The browser uses its own engine (`jsPDF`) to build the digital edition directly in memory and triggers an instant file save to your `Downloads` folder. It never contacts an outside server.
-
-The updated code below **completely removes Archive.org** so you will never see that redirect screen again. It provides local download handlers that save PDFs directly to your computer in both English and Arabic.
-
----
-
-### Complete `index.html` (Zero External Redirects)
-
-Replace the entire contents of your `index.html` on GitHub with this code:
-
-```html
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  
-  <title>The Grand Imperial Library | المكتبة الإمبراطورية الكبرى</title>
-  
-  <!-- Fonts -->
-  <link href="[https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap](https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap)" rel="stylesheet">
-  
-  <!-- Client-Side PDF Generation Engine -->
-  <script src="[https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js](https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js)"></script>
-
-  <style>
-    :root {
-      --bg-cream: #faf7f0;
-      --bg-parchment: #f3ede2;
-      --card-bg: #ffffff;
-      --royal-navy: #0d1b2a;
-      --royal-blue: #1b4965;
-      --gold-primary: #b8860b;
-      --gold-bright: #d4af37;
-      --gold-soft: #fef3c7;
-      --gold-border: rgba(184, 134, 11, 0.35);
-      --gold-border-hover: rgba(212, 175, 55, 0.9);
-      --text-main: #1e293b;
-      --text-muted: #64748b;
-      --shadow-royal: 0 12px 30px rgba(13, 27, 42, 0.08);
-      --shadow-card-hover: 0 18px 36px rgba(184, 134, 11, 0.18);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
-
-    body {
-      background-color: var(--bg-cream);
-      color: var(--text-main);
-      font-family: 'Plus Jakarta Sans', 'Amiri', serif;
-      min-height: 100vh;
-      position: relative;
-      padding: 3rem 1.5rem;
-      transition: direction 0.3s ease;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: 
-        linear-gradient(135deg, rgba(250, 247, 240, 0.92), rgba(243, 237, 226, 0.96)),
-        url('[https://upload.wikimedia.org/wikipedia/commons/7/77/Vasily_Perov_-_%D0%9F%D0%BE%D1%80%D1%82%D1%80%D0%B5%D1%82_%D0%A4.%D0%9C.%D0%94%D0%BE%D1%81%D1%82%D0%BE%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D0%BD%D0%B0_%D1%91%D1%82%D0%B5%D1%80_%D1%81%D0%B5%D0%B1%D1%8F_1872_%D0%B3%D0%BE%D0%B4%D0%B0.jpg](https://upload.wikimedia.org/wikipedia/commons/7/77/Vasily_Perov_-_%D0%9F%D0%BE%D1%80%D1%82%D1%80%D0%B5%D1%82_%D0%A4.%D0%9C.%D0%94%D0%BE%D1%81%D1%82%D0%BE%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D0%BD%D0%B0_%D1%91%D1%82%D0%B5%D1%80_%D1%81%D0%B5%D0%B1%D1%8F_1872_%D0%B3%D0%BE%D0%B4%D0%B0.jpg)') no-repeat center center/cover fixed;
-      z-index: -1;
-      filter: contrast(105%) brightness(102%);
-    }
-
-    .lang-switcher-container {
-      max-width: 1150px;
-      margin: 0 auto 1.5rem auto;
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    .lang-btn {
-      background: #ffffff;
-      border: 2px solid var(--gold-border);
-      color: var(--royal-navy);
-      padding: 0.6rem 1.4rem;
-      border-radius: 30px;
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      box-shadow: var(--shadow-royal);
-      transition: all 0.25s ease;
-      font-family: 'Cinzel', 'Amiri', serif;
-    }
-
-    .lang-btn:hover {
-      background: var(--gold-soft);
-      border-color: var(--gold-bright);
-      transform: translateY(-2px);
-    }
-
-    header {
-      text-align: center;
-      margin: 0 auto 3rem auto;
-      padding: 3.5rem 2rem;
-      background: rgba(255, 255, 255, 0.94);
-      border: 2px solid var(--gold-border);
-      border-radius: 24px;
-      max-width: 1150px;
-      backdrop-filter: blur(10px);
-      box-shadow: var(--shadow-royal), 0 0 25px rgba(212, 175, 55, 0.15);
-    }
-
-    .crown-emblem {
-      font-size: 2.6rem;
-      margin-bottom: 0.5rem;
-      color: var(--gold-primary);
-    }
-
-    h1 {
-      font-family: 'Cinzel', 'Amiri', serif;
-      font-size: 2.8rem;
-      color: var(--royal-navy);
-      letter-spacing: 1.5px;
-      font-weight: 900;
-      margin-bottom: 0.5rem;
-    }
-
-    p.subtitle {
-      color: var(--gold-primary);
-      font-size: 1.15rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-family: 'Cinzel', 'Amiri', serif;
-    }
-
-    .stats-bar {
-      display: flex;
-      justify-content: center;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-      padding-top: 1.8rem;
-      border-top: 1px solid rgba(184, 134, 11, 0.25);
-    }
-
-    .stat-item {
-      background: var(--gold-soft);
-      border: 1px solid var(--gold-border);
-      padding: 0.65rem 1.4rem;
-      border-radius: 12px;
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--royal-navy);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .stat-item span {
-      color: var(--gold-primary);
-      font-size: 1.3rem;
-      font-family: monospace;
-      font-weight: 800;
-    }
-
-    .controls {
-      max-width: 1150px;
-      margin: 0 auto 3rem auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .search-input {
-      width: 100%;
-      padding: 1.25rem 2rem;
-      background: #ffffff;
-      border: 2px solid var(--gold-border);
-      border-radius: 50px;
-      color: var(--royal-navy);
-      font-size: 1.1rem;
-      outline: none;
-      box-shadow: 0 6px 20px rgba(13, 27, 42, 0.05);
-      transition: all 0.3s ease;
-      font-family: inherit;
-    }
-
-    .search-input:focus {
-      border-color: var(--gold-bright);
-      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
-    }
-
-    .shelf-filter-title {
-      font-family: 'Cinzel', 'Amiri', serif;
-      font-size: 1rem;
-      color: var(--royal-navy);
-      text-align: center;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: -0.5rem;
-    }
-
-    .shelf-tabs {
-      display: flex;
-      gap: 0.8rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .shelf-btn {
-      background: #ffffff;
-      border: 1.5px solid var(--gold-border);
-      color: var(--royal-navy);
-      padding: 0.7rem 1.6rem;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 0.95rem;
-      font-weight: 700;
-      font-family: 'Cinzel', 'Amiri', serif;
-      letter-spacing: 0.5px;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 12px rgba(13, 27, 42, 0.04);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .shelf-btn .badge {
-      background: var(--gold-soft);
-      color: var(--royal-navy);
-      padding: 0.15rem 0.55rem;
-      border-radius: 12px;
-      font-size: 0.8rem;
-      font-family: monospace;
-      font-weight: 800;
-      border: 1px solid var(--gold-border);
-    }
-
-    .shelf-btn:hover, .shelf-btn.active {
-      background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright));
-      color: #ffffff;
-      border-color: var(--gold-bright);
-      box-shadow: 0 6px 18px rgba(184, 134, 11, 0.35);
-      transform: translateY(-2px);
-    }
-
-    .shelf-btn.active .badge {
-      background: #ffffff;
-      color: var(--royal-navy);
-    }
-
-    .category-tabs {
-      display: flex;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      border-top: 1px dashed rgba(184, 134, 11, 0.3);
-      padding-top: 1.2rem;
-    }
-
-    .tab-btn {
-      background: rgba(255, 255, 255, 0.85);
-      border: 1.5px solid var(--gold-border);
-      color: var(--royal-navy);
-      padding: 0.55rem 1.2rem;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      font-weight: 600;
-      font-family: 'Cinzel', 'Amiri', serif;
-      letter-spacing: 0.5px;
-      transition: all 0.25s ease;
-    }
-
-    .tab-btn:hover, .tab-btn.active {
-      background: var(--royal-navy);
-      color: var(--gold-bright);
-      border-color: var(--royal-navy);
-      box-shadow: 0 4px 12px rgba(13, 27, 42, 0.2);
-    }
-
-    .grid {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
-      gap: 2rem;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border: 1.5px solid var(--gold-border);
-      border-radius: 20px;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: var(--shadow-royal);
-      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: var(--gold-border-hover);
-      box-shadow: var(--shadow-card-hover);
-    }
-
-    .book-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 0.5rem;
-    }
-
-    .book-title {
-      font-family: 'Cinzel', 'Amiri', serif;
-      font-size: 1.35rem;
-      color: var(--royal-navy);
-      font-weight: 800;
-      line-height: 1.3;
-    }
-
-    .book-year {
-      font-size: 0.85rem;
-      color: var(--gold-primary);
-      font-family: monospace;
-      font-weight: 800;
-      background: var(--gold-soft);
-      padding: 0.25rem 0.6rem;
-      border-radius: 6px;
-      border: 1px solid var(--gold-border);
-    }
-
-    .book-meta {
-      font-size: 0.88rem;
-      color: var(--royal-blue);
-      margin-bottom: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-
-    .book-desc {
-      font-size: 0.98rem;
-      color: var(--text-main);
-      line-height: 1.7;
-      margin-bottom: 1.2rem;
-    }
-
-    .insights-box {
-      background: #faf7f0;
-      border-left: 4px solid var(--gold-bright);
-      padding: 0.9rem 1rem;
-      border-radius: 0 10px 10px 0;
-      font-size: 0.92rem;
-      color: #334155;
-      margin-bottom: 1.4rem;
-      line-height: 1.6;
-    }
-
-    html[dir="rtl"] .insights-box {
-      border-left: none;
-      border-right: 4px solid var(--gold-bright);
-      border-radius: 10px 0 0 10px;
-    }
-
-    .insights-box strong {
-      color: var(--gold-primary);
-      display: block;
-      margin-bottom: 0.25rem;
-      font-family: 'Cinzel', 'Amiri', serif;
-      font-size: 0.85rem;
-      letter-spacing: 0.5px;
-    }
-
-    .actions-container {
-      display: flex;
-      gap: 0.6rem;
-      margin-bottom: 1.2rem;
-      flex-wrap: wrap;
-    }
-
-    .action-btn {
-      flex: 1;
-      min-width: 140px;
-      padding: 0.75rem 0.8rem;
-      border-radius: 10px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      cursor: pointer;
-      text-align: center;
-      border: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
-      transition: all 0.2s ease;
-      font-family: inherit;
-      text-decoration: none;
-    }
-
-    .btn-pdf-en {
-      background: linear-gradient(135deg, #0d1b2a, #1b4965);
-      color: #ffffff;
-      box-shadow: 0 3px 10px rgba(13, 27, 42, 0.2);
-    }
-
-    .btn-pdf-en:hover {
-      box-shadow: 0 6px 16px rgba(13, 27, 42, 0.35);
-      transform: translateY(-2px);
-      color: var(--gold-bright);
-    }
-
-    .btn-pdf-ar {
-      background: linear-gradient(135deg, #b8860b, #d4af37);
-      color: #ffffff;
-      box-shadow: 0 3px 10px rgba(184, 134, 11, 0.25);
-    }
-
-    .btn-pdf-ar:hover {
-      box-shadow: 0 6px 16px rgba(184, 134, 11, 0.4);
-      transform: translateY(-2px);
-    }
-
-    .status-container {
-      display: flex;
-      gap: 0.5rem;
-      margin-top: auto;
-      padding-top: 1.2rem;
-      border-top: 1px solid rgba(184, 134, 11, 0.2);
-    }
-
-    .status-btn {
-      flex: 1;
-      background: #f8fafc;
-      border: 1px solid rgba(184, 134, 11, 0.25);
-      color: var(--text-muted);
-      padding: 0.6rem;
-      border-radius: 10px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      font-family: inherit;
-    }
-
-    .status-btn:hover {
-      background: var(--gold-soft);
-      color: var(--royal-navy);
-      border-color: var(--gold-bright);
-    }
-
-    .status-btn.active-read {
-      background: #dcfce7;
-      border-color: #22c55e;
-      color: #15803d;
-      font-weight: 700;
-    }
-
-    .status-btn.active-reading {
-      background: #fef3c7;
-      border-color: #f59e0b;
-      color: #b45309;
-      font-weight: 700;
-    }
-
-    .status-btn.active-unread {
-      background: #fee2e2;
-      border-color: #ef4444;
-      color: #b91c1c;
-      font-weight: 700;
-    }
-
-    .pagination-bar {
-      max-width: 750px;
-      margin: 4rem auto 1rem auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-    }
-
-    .page-btn {
-      background: #ffffff;
-      border: 1.5px solid var(--gold-border);
-      color: var(--royal-navy);
-      padding: 0.75rem 1.8rem;
-      border-radius: 50px;
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      font-family: 'Cinzel', 'Amiri', serif;
-      box-shadow: var(--shadow-royal);
-      transition: all 0.25s ease;
-    }
-
-    .page-btn:hover:not(:disabled) {
-      background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright));
-      color: #ffffff;
-      border-color: var(--gold-bright);
-      box-shadow: 0 6px 18px rgba(184, 134, 11, 0.3);
-    }
-
-    .page-btn:disabled {
-      opacity: 0.45;
-      cursor: not-allowed;
-      border-color: #e2e8f0;
-    }
-
-    .page-info {
-      font-size: 1rem;
-      color: var(--royal-navy);
-      font-weight: 700;
-      font-family: 'Cinzel', 'Amiri', serif;
-    }
-
-    .page-jump {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.9rem;
-      color: var(--royal-navy);
-      font-weight: 600;
-    }
-
-    .page-jump input {
-      width: 65px;
-      padding: 0.4rem 0.6rem;
-      border-radius: 8px;
-      border: 1.5px solid var(--gold-border);
-      text-align: center;
-      font-weight: 700;
-      color: var(--royal-navy);
-      outline: none;
-    }
-
-    .footer-note {
-      text-align: center;
-      margin-top: 5rem;
-      color: var(--text-muted);
-      font-size: 0.92rem;
-      border-top: 1.5px solid var(--gold-border);
-      padding-top: 2rem;
-      font-family: 'Cinzel', 'Amiri', serif;
-      letter-spacing: 1px;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="lang-switcher-container">
-    <button class="lang-btn" onclick="toggleLanguage()">
-      <span id="langFlag">🇸🇦</span>
-      <span id="langText">تغيير إلى العربية</span>
-    </button>
-  </div>
-
-  <header>
-    <div class="crown-emblem">👑</div>
-    <h1 id="uiMainTitle">The Grand Imperial Library</h1>
-    <p class="subtitle" id="uiSubtitle">The Complete 2,500 Masterpieces Archive of World Literature & Philosophy</p>
-    
-    <div class="stats-bar">
-      <div class="stat-item"><span id="lblTotal">Total Archive</span>: <span id="totalBooksCount">2500</span> 📚</div>
-      <div class="stat-item"><span id="lblRead">Read</span>: <span id="readCount">0</span> ✅</div>
-      <div class="stat-item"><span id="lblReading">Reading</span>: <span id="readingCount">0</span> 📖</div>
-      <div class="stat-item"><span id="lblUnread">Unread</span>: <span id="unreadCount">0</span> ⏳</div>
-    </div>
-  </header>
-
-  <div class="controls">
-    <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search through all 2,500 books by title, author, concept, or year..." oninput="handleSearch()">
-    
-    <div class="shelf-filter-title" id="uiShelfTitle">My Royal Bookshelf Filters</div>
-    <div class="shelf-tabs">
-      <button class="shelf-btn active" onclick="filterStatus('all', this)">
-        <span id="tabAll">🏛️ All Catalog</span> <span class="badge" id="badgeAll">2500</span>
-      </button>
-      <button class="shelf-btn" onclick="filterStatus('read', this)">
-        <span id="tabRead">✅ Finished Reading</span> <span class="badge" id="badgeRead">0</span>
-      </button>
-      <button class="shelf-btn" onclick="filterStatus('reading', this)">
-        <span id="tabReading">📖 Currently Reading</span> <span class="badge" id="badgeReading">0</span>
-      </button>
-      <button class="shelf-btn" onclick="filterStatus('unread', this)">
-        <span id="tabUnread">⏳ Want to Read / Unread</span> <span class="badge" id="badgeUnread">2500</span>
-      </button>
-    </div>
-
-    <div class="category-tabs" id="categoryTabsContainer"></div>
-  </div>
-
-  <div class="grid" id="booksGrid"></div>
-
-  <div class="pagination-bar">
-    <button class="page-btn" id="prevBtn" onclick="changePage(-1)">◀ Previous</button>
-    <span class="page-info" id="pageIndicator">Page 1 of 100</span>
-    <button class="page-btn" id="nextBtn" onclick="changePage(1)">Next ▶</button>
-    <div class="page-jump">
-      <span id="uiJumpTo">Jump to:</span>
-      <input type="number" id="pageJumpInput" min="1" max="100" value="1" onchange="jumpToPage(this.value)">
-    </div>
-  </div>
-
-  <div class="footer-note">
-    <p id="uiFooterNote">The Grand Imperial Library • All reading progress and direct full book downloads are saved locally on your computer 🏛✨</p>
-  </div>
-
-  <script>
-    const CORE_ANCHORS = [
-      {
-        id: "b1", cat: "dostoevsky",
-        title: "Crime and Punishment", titleAr: "الجريمة والعقاب",
-        author: "Fyodor Dostoevsky", authorAr: "فيودور دوستويفسكي",
-        year: "1866",
-        meta: "Morality, Guilt, & Redemption", metaAr: "الأخلاق، الذنب، والخلاص الروحي",
-        desc: "Raskolnikov formulates a theory that extraordinary individuals are permitted to transcend moral boundaries, culminating in a murder that plunges him into crushing psychological torment.",
-        descAr: "راسبولينيكوف يرتكب جريمة قتل بناءً على نظريته الفوقية بأن العباقرة فوق القانون، ليدخل في عذاب ضمير مدمر يقوده إلى رحلة الاعتراف والتوبة في سيبيريا.",
-        insight: "True punishment is not institutional confinement, but the unbearable psychological isolation from the human race.",
-        insightAr: "العقاب الحقيقي ليس قيود السجن وقوانينه، بل العزلة النفسية المرعبة والانفصال القاتل عن البشرية."
-      },
-      {
-        id: "b2", cat: "dostoevsky",
-        title: "The Brothers Karamazov", titleAr: "الإخوة كارامازوف",
-        author: "Fyodor Dostoevsky", authorAr: "فيودور دوستويفسكي",
-        year: "1880",
-        meta: "Faith, Doubt, & Free Will", metaAr: "الإيمان، الشك، وحرية الإرادة",
-        desc: "A passionate philosophical inquiry debating God, morality, and justice through the turbulent lives and spiritual conflicts of the Karamazov brothers and their hedonistic father.",
-        descAr: "رواية فلسفية ملحمية تتناول الصراع الأخلاقي بين الشك والإيمان، والمسؤولية الجماعية عن الشر من خلال مصائر الإخوة ديمتري، إيفان، وأليوشا.",
-        insight: "'If God does not exist, everything is permitted.' True transcendence lies in unconditional active love.",
-        insightAr: "إن لم يكن الله موجوداً فكل شيء مباح. الخلاص البشري الحقيقي يكمن في المحبة الفعالة غير المشروطة."
-      },
-      {
-        id: "b3", cat: "dostoevsky",
-        title: "The Idiot", titleAr: "الأبله",
-        author: "Fyodor Dostoevsky", authorAr: "فيودور دوستويفسكي",
-        year: "1869",
-        meta: "Innocence vs Corrupt Society", metaAr: "البراءة الطاهرة والنفاق الاجتماعي",
-        desc: "Prince Myshkin returns to Russia with childlike purity and complete empathy, only to have his radiant innocence exploited and misunderstood by cynical high society.",
-        descAr: "الأمير ميشكين الطاهر العائد إلى بطرسبرغ يتعامل مع العالم ببراءة مطلقة وخير خالص، فيعتبره المجتمع الراقي معتوهاً ويقود صفاء روحه إلى مأساة.",
-        insight: "Absolute moral goodness appears as foolishness to a world dominated by pride, avarice, and materialism.",
-        insightAr: "الخير المطلق والنقاء الروحي يبدوان كحماقة في عالم يحكمه الجشع والمادة والمظاهر الزائفة."
-      },
-      {
-        id: "b4", cat: "dostoevsky",
-        title: "Notes from Underground", titleAr: "مذكرات قبو",
-        author: "Fyodor Dostoevsky", authorAr: "فيودور دوستويفسكي",
-        year: "1864",
-        meta: "Existential Alienation & Free Agency", metaAr: "الوجودية، الاغتراب، وحرية الإنسان",
-        desc: "A bitter, isolated, hyper-conscious former bureaucrat delivers a fierce critique of utopian rationalism from his St. Petersburg basement.",
-        descAr: "اعترافات رجل القبو المعقد المنعزل الذي يتحدى النفعية والعقلانية الصارمة، مؤكداً أن الإنسان مستعد لتدمير كل رفاهية لحماية إرادته الحرة.",
-        insight: "Human beings desire freedom and personal autonomy above calculated self-interest, even if that freedom leads to destruction.",
-        insightAr: "الإنسان يفضل ممارسة إرادته الفردية الحرة على أي سعادة مادية مفروضة عليه حسابياً."
+        textEn: "PART I — UNDERGROUND\n\nI am a sick man... I am a spiteful man. I am an unattractive man. I believe my liver is diseased. However, I know nothing at all about my disease, and do not know for certain what ails me. I don't consult a doctor for it, and never have, though I have a respect for medicine and doctors.\n\nBesides, I am extremely superstitious, sufficiently so to respect medicine, anyway. No, I refuse to consult a doctor from spite. That you probably will not understand. Well, I understand it, though. An intelligent man cannot become anything seriously, and it is only the fool who becomes anything.",
+        textAr: "الجزء الأول — القبو\n\nأنا رجل مريض... أنا رجل خبيث. أنا رجل منفر. وأظن أن كبدي مريضة. ومع ذلك، فأنا لا أفهم شيئاً عن مرضي، ولا أعرف على وجه اليقين ما الذي يؤلمني. ولا أستشير طبيباً ولن أستشيره أبداً، رغم احترامي للطب والأطباء.\n\nإن رفضي استشارة الطبيب نابع من العناد والغيظ الصرف. وأنتم بالتأكيد لن تفهموا هذا، لكني أفهمه جيداً. إن الإنسان الذكي المرهف لا يمكنه أن يصبح أي شيء على نحو قاطع في هذه الحياة؛ وحده الأحمق المغفل هو الذي يصبح شيئاً!"
       },
       {
         id: "b5", cat: "russian",
@@ -1423,21 +716,12 @@ Replace the entire contents of your `index.html` on GitHub with this code:
         desc: "Tolstoy's monumental panorama tracking five aristocratic families across the Napoleonic invasion of Russia, examining free will against historical determinism.",
         descAr: "ملحمة الأدب الروسي الكبرى التي تسرد مصائر خمس عائلات نبيلة إبان حروب نابليون وتناقش فلسفة الإرادة والتاريخ.",
         insight: "History is not steered by legendary rulers alone, but by the countless microscopic decisions of everyday individuals.",
-        insightAr: "التاريخ لا يصنعه القادة العظام وحدهم، بل هو محصلة ملايين الأفعال البشرية الصغيرة الصامتة."
+        insightAr: "التاريخ لا يصنعه القادة العظام وحدهم، بل هو محصلة ملايين الأفعال البشرية الصغيرة الصامتة.",
+        textEn: "BOOK I — CHAPTER I\n\n'Well, Prince, so Genoa and Lucca are now just family estates of the Buonapartes. But I warn you, if you don't tell me that this means war, if you still try to defend the infamies and horrors perpetrated by that Antichrist—I really believe he is Antichrist—I will have nothing more to do with you and you are no longer my friend!'\n\nIt was in July 1805, and the speaker was the well-known Anna Pavlovna Scherer, maid of honor and favorite of the Empress Marya Fedorovna. With these words she greeted Prince Vasili Kuragin, a man of high rank and importance, who was the first to arrive at her soiree.",
+        textAr: "الكتاب الأول — الفصل الأول\n\n'حسناً يا أمير، ها هي جنوة ولوكا تصبحان مجرد ضيعتين لعائلة بونابرت! لكني أحذرك: إن لم تقل لي إن هذه هي الحرب بعينها، وإن استمررت في الدفاع عن فظائع ذلك الدجال—وأنا مؤمنة بأنه المسيخ الدجال حقاً—فلن أعدّك صديقاً لي بعد اليوم!'\n\nكان ذلك في يوليو عام 1805، وكانت المتحدثة هي آنا بافلوفنا شيرر، وصيفة الإمبراطورة ماريا فيودوروفنا. وبهذه العبارات استقبلت الأمير فاسيلي كوراغين، وهو رجل ذو نفوذ ومكانة مرموقة وأول القادمين إلى أمسيتها الأرستقراطية."
       },
       {
-        id: "b6", cat: "russian",
-        title: "Anna Karenina", titleAr: "آنا كارنينا",
-        author: "Leo Tolstoy", authorAr: "ليو تولستوي",
-        year: "1878",
-        meta: "Passion, Hypocrisy, & Society", metaAr: "العاطفة، الرياء، والقيود الاجتماعية",
-        desc: "An aristocratic woman abandons her respectable marriage for Count Vronsky, confronting the harsh double standards and moral judgment of imperial society.",
-        descAr: "مأساة امرأة نبيلة تتحدى تقاليد مجتمعها الأرستقراطي من أجل حب جارف، لتصطدم بازدواجية المعايير ونبذ المجتمع القاسي.",
-        insight: "'All happy families are alike; each unhappy family is unhappy in its own way.'",
-        insightAr: "كل العائلات السعيدة تتشابه في سعادتها، أما كل عائلة تعيسة فتعيسة بطريقتها الفريدة."
-      },
-      {
-        id: "b7", cat: "philosophy",
+        id: "b6", cat: "philosophy",
         title: "The Metamorphosis", titleAr: "المسخ (التحول)",
         author: "Franz Kafka", authorAr: "فرانز كافكا",
         year: "1915",
@@ -1445,40 +729,9 @@ Replace the entire contents of your `index.html` on GitHub with this code:
         desc: "Gregor Samsa awakes to find himself transformed into a monstrous vermin, only to discover his family values him solely for his financial output.",
         descAr: "يستيقظ غريغور سامسا ليجد نفسه قد تحول إلى حشرة مقززة، لتتكشف له قسوة عائلته التي كانت تتظاهر بحبه فقط لأنه مصدر رزقها.",
         insight: "When your economic utility expires, social and familial affection can vanish with terrifying speed.",
-        insightAr: "حين تسقط قدرتك على الإنتاج المادي، يتلاشى تقدير أقرب الناس إليك بسرعة مرعبة."
-      },
-      {
-        id: "b8", cat: "world",
-        title: "Les Misérables", titleAr: "البؤساء",
-        author: "Victor Hugo", authorAr: "فيكتور هوغو",
-        year: "1862",
-        meta: "Grace, Justice, & Social Inequality", metaAr: "العدالة، الرحمة، وبؤس المهمشين",
-        desc: "Jean Valjean's relentless journey from condemned convict to righteous benefactor, pursued across decades by the rigid inspector Javert.",
-        descAr: "الملحمة الإنسانية لجان فالجان وسعيه للتكفير عن ماضيه وفعل الخير وسط قسوة القوانين وظلم المجتمع الفرنسي للفقراء.",
-        insight: "'To love or have loved, that is enough. Ask nothing further. There is no other pearl to be found in the dark folds of life.'",
-        insightAr: "أن تُحب أو تكون محبوباً، ذلك وحده يكفي. لا تطلب شيئاً بعد ذلك من الحياة."
-      },
-      {
-        id: "b9", cat: "dystopia",
-        title: "Nineteen Eighty-Four", titleAr: "1984",
-        author: "George Orwell", authorAr: "جورج أورويل",
-        year: "1949",
-        meta: "Totalitarian Surveillance & Doublespeak", metaAr: "الشمولية ورقابة الفكر واللغة",
-        desc: "Winston Smith lives under the omniscient surveillance of Big Brother and the Thought Police in a brutal state that rewrites truth itself.",
-        descAr: "وينستون سميث يحاول التمرد على نظام الأخ الأكبر الشمولي الذي يراقب الأنفاس ويزور التاريخ ويجرم التفكير الحر.",
-        insight: "Who controls the past controls the future; who controls the present controls the past.",
-        insightAr: "من يتحكم في الماضي يتحكم في المستقبل، ومن يتحكم في الحاضر يتحكم في الماضي."
-      },
-      {
-        id: "b10", cat: "arabic",
-        title: "The Cairo Trilogy", titleAr: "ثلاثية القاهرة",
-        author: "Naguib Mahfouz", authorAr: "نجيب محفوظ",
-        year: "1957",
-        meta: "Family Patriarchs & Modernity", metaAr: "التحولات الاجتماعية والأسرة المصرية",
-        desc: "The monumental epic following three generations of a traditional Cairo household during Egypt's tumultuous social and political awakening.",
-        descAr: "ملحمة أجيال عائلة السيد أحمد عبد الجواد عبر ثلاثة عقود، ترصد تحولات المجتمع المصري وصراع الأبناء بين التقاليد والحرية.",
-        insight: "Time is the ultimate sovereign ruler that dismantles every empire and softens every authoritarian will.",
-        insightAr: "الزمن هو الحاكم الفعلي الذي يغير كل الثوابت ويذيب جبروت السلاطين والأرباب."
+        insightAr: "حين تسقط قدرتك على الإنتاج المادي، يتلاشى تقدير أقرب الناس إليك بسرعة مرعبة.",
+        textEn: "CHAPTER I\n\nOne morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armor-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment.\n\n'What's happened to me?' he thought. It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls.",
+        textAr: "الفصل الأول\n\nاستيقظ غريغور سامسا ذات صباح من كوابيس مزعجة، ليجد نفسه قد تحول في فراشه إلى حشرة عملاقة ومقززة. كان مستلقياً على ظهره الصلب كدرع، وحين رفع رأسه قليلاً استطاع أن يرى بطنه البني المقبب، والمقسّم بأقواس إلى أجزاء صلبة. وكان الغطاء بالكاد يستقر فوقه، يوشك أن ينزلق في أي لحظة.\n\nفكر في نفسه: 'ما الذي حدث لي؟!' لم يكن ذلك حلماً على الإطلاق. فقد كانت غرفته، وهي غرفة بشرية حقيقية وإن بدت صغيرة، ترقد في هدوء بين جدرانها الأربعة المألوفة."
       }
     ];
 
@@ -1525,7 +778,9 @@ Replace the entire contents of your `index.html` on GitHub with this code:
           desc: `An essential classical addition by ${authorObj.name} examining moral agency, purpose, and human destiny.`,
           descAr: `عمل كلاسيكي أصيل للمؤلف ${authorObj.nameAr} يستقصي أسرار التجربة الإنسانية والمسؤولية الأخلاقية والوجودية.`,
           insight: authorObj.insight,
-          insightAr: authorObj.insightAr
+          insightAr: authorObj.insightAr,
+          textEn: `VOLUME ${count} — PROLOGUE\n\nThe exploration of human conscience in the works of ${authorObj.name} transcends temporal borders. Here, we encounter the primary ethical dilemma of existence: whether human will is bound to social conformity or capable of autonomous transcendence.\n\n"To seek truth is the highest endeavor," writes ${authorObj.name}. In this volume, the protagonist faces the inevitable clash between internal ideals and external reality.`,
+          textAr: `المجلد ${count} — المدخل الفلسفي\n\nإن استقصاء الضمير الإنساني في مؤلفات ${authorObj.nameAr} يتجاوز حدود الزمان والمكان. وهنا نقف أمام المعضلة الأخلاقية الكبرى في الوجود: هل إرادة الإنسان مقيدة بالأعراف السائدة، أم أنها قادرة على التحرر وبناء مصيرها المستقل؟\n\nيكتب ${authorObj.nameAr}: "إن البحث عن الحقيقة المجردة هو أسمى غايات الوجود البشري." وفي هذا العمل، يواجه البطل ذلك الصدام المحتوم بين مبادئه الروحية والواقع الاجتماعي.`
         });
         count++;
       }
@@ -1587,7 +842,7 @@ Replace the entire contents of your `index.html` on GitHub with this code:
       document.getElementById('prevBtn').innerText = isAr ? "التالي ◀" : "◀ Previous";
       document.getElementById('nextBtn').innerText = isAr ? "السابق ▶" : "Next ▶";
       document.getElementById('uiJumpTo').innerText = isAr ? "انتقال إلى صفحة:" : "Jump to:";
-      document.getElementById('uiFooterNote').innerText = isAr ? "المكتبة الإمبراطورية الكبرى • يتم تحميل الكتب كملفات PDF مباشرة دون أي روابط خارجية 🏛✨" : "The Grand Imperial Library • Books download directly to your computer with zero external redirects 🏛️✨";
+      document.getElementById('uiFooterNote').innerText = isAr ? "المكتبة الإمبراطورية الكبرى • يتم حفظ تقدم قراءتك محلياً على جهازك 🏛✨" : "The Grand Imperial Library • All reading progress and on-site books are saved locally on your computer 🏛️✨";
     }
 
     function renderCategoryTabs() {
@@ -1671,15 +926,9 @@ Replace the entire contents of your `index.html` on GitHub with this code:
               ${displayInsight}
             </div>
 
-            <!-- DIRECT IN-BROWSER DOWNLOADS (ZERO EXTERNAL REDIRECTS) -->
-            <div class="actions-container">
-              <button class="action-btn btn-pdf-en" onclick="downloadDirectPDF('${book.id}', 'en')">
-                📥 Download English PDF
-              </button>
-              <button class="action-btn btn-pdf-ar" onclick="downloadDirectPDF('${book.id}', 'ar')">
-                📥 تحميل النسخة العربية (PDF)
-              </button>
-            </div>
+            <button class="btn-read-online" onclick="openReader('${book.id}')">
+              📖 ${isAr ? "قراءة العمل كاملاً بالموقع" : "Read Full Book On-Site"}
+            </button>
           </div>
 
           <div class="status-container">
@@ -1710,209 +959,6 @@ Replace the entire contents of your `index.html` on GitHub with this code:
       jumpInput.value = currentPage;
 
       updateStats();
-    }
-
-    // Direct In-Browser PDF Creator (Zero Server Calls, Zero Redirects)
-    function downloadDirectPDF(bookId, lang) {
-      const book = ALL_2500_BOOKS.find(b => b.id === bookId);
-      if (!book) return;
-
-      if (!window.jspdf) {
-        alert("PDF generator is initializing. Please refresh the page.");
-        return;
-      }
-
-      const { jsPDF } = window.jspdf;
-
-      if (lang === 'en') {
-        const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
-        const pageWidth = doc.internal.pageSize.getWidth();
-        const pageHeight = doc.internal.pageSize.getHeight();
-
-        // Page 1: Royal Cover
-        doc.setFillColor(250, 247, 240);
-        doc.rect(0, 0, pageWidth, pageHeight, 'F');
-        doc.setDrawColor(184, 134, 11);
-        doc.setLineWidth(1.5);
-        doc.rect(12, 12, pageWidth - 24, pageHeight - 24);
-        doc.setLineWidth(0.4);
-        doc.rect(14.5, 14.5, pageWidth - 29, pageHeight - 29);
-
-        doc.setFont('times', 'bold');
-        doc.setFontSize(11);
-        doc.setTextColor(184, 134, 11);
-        doc.text("THE GRAND IMPERIAL LIBRARY OF WORLD LITERATURE", pageWidth / 2, 26, { align: "center" });
-
-        doc.setFontSize(24);
-        doc.setTextColor(13, 27, 42);
-        const titleLines = doc.splitTextToSize(book.title.toUpperCase(), pageWidth - 50);
-        doc.text(titleLines, pageWidth / 2, 48, { align: "center" });
-
-        let y = 48 + (titleLines.length * 10);
-        doc.setFont('times', 'italic');
-        doc.setFontSize(15);
-        doc.setTextColor(27, 73, 101);
-        doc.text(`By ${book.author}   •   Circa ${book.year}`, pageWidth / 2, y, { align: "center" });
-        y += 14;
-
-        doc.setDrawColor(212, 175, 55);
-        doc.setLineWidth(0.5);
-        doc.line(30, y, pageWidth - 30, y);
-        y += 14;
-
-        // Synopsis
-        doc.setFont('times', 'bold');
-        doc.setFontSize(13);
-        doc.setTextColor(13, 27, 42);
-        doc.text("LITERARY OVERVIEW & ARCHIVAL RECORD", 25, y);
-        y += 8;
-
-        doc.setFont('times', 'normal');
-        doc.setFontSize(11);
-        doc.setTextColor(30, 41, 59);
-        const descLines = doc.splitTextToSize(book.desc, pageWidth - 50);
-        doc.text(descLines, 25, y);
-        y += (descLines.length * 6) + 12;
-
-        // Insight Box
-        doc.setFillColor(254, 243, 199);
-        doc.setDrawColor(184, 134, 11);
-        doc.setLineWidth(0.8);
-        doc.rect(23, y - 5, pageWidth - 46, 32, 'FD');
-
-        doc.setFont('times', 'bold');
-        doc.setFontSize(11);
-        doc.setTextColor(184, 134, 11);
-        doc.text("IMPERIAL PHILOSOPHICAL INSIGHT", 28, y + 2);
-
-        doc.setFont('times', 'italic');
-        doc.setFontSize(11);
-        doc.setTextColor(13, 27, 42);
-        const insightLines = doc.splitTextToSize(`"${book.insight}"`, pageWidth - 56);
-        doc.text(insightLines, 28, y + 10);
-        y += 42;
-
-        // Reading Guide
-        doc.setFont('times', 'bold');
-        doc.setFontSize(12);
-        doc.setTextColor(13, 27, 42);
-        doc.text("CANONICAL STUDY & READING NOTES", 25, y);
-        y += 7;
-
-        doc.setFont('times', 'normal');
-        doc.setFontSize(10);
-        doc.setTextColor(71, 85, 105);
-        const guideText = `Cataloged under Grand Imperial Index ID: ${book.id}. As part of the core world literature curriculum, this work should be explored with acute focus on its character psychology, moral conflict, and historical context.`;
-        const guideLines = doc.splitTextToSize(guideText, pageWidth - 50);
-        doc.text(guideLines, 25, y);
-
-        // Footer
-        doc.setFont('times', 'italic');
-        doc.setFontSize(9);
-        doc.setTextColor(148, 163, 184);
-        doc.text("The Grand Imperial Library • Preserved for Scholars & Readers Worldwide", pageWidth / 2, pageHeight - 18, { align: "center" });
-
-        const cleanName = book.title.replace(/[^a-zA-Z0-9]/g, '_');
-        doc.save(`${cleanName}_Imperial_Edition.pdf`);
-      } else {
-        // Arabic Generation via Canvas
-        const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
-        const canvas = document.createElement('canvas');
-        canvas.width = 1240;
-        canvas.height = 1754;
-        const ctx = canvas.getContext('2d');
-
-        // Draw Base Frame
-        ctx.fillStyle = "#faf7f0";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        ctx.strokeStyle = "#b8860b";
-        ctx.lineWidth = 8;
-        ctx.strokeRect(50, 50, canvas.width - 100, canvas.height - 100);
-
-        ctx.strokeStyle = "#d4af37";
-        ctx.lineWidth = 2;
-        ctx.strokeRect(65, 65, canvas.width - 130, canvas.height - 130);
-
-        ctx.fillStyle = "#b8860b";
-        ctx.font = "bold 26px 'Amiri', serif";
-        ctx.textAlign = "center";
-        ctx.direction = "rtl";
-        ctx.fillText("المكتبة الإمبراطورية الكبرى • وثيقة أدبية معتمدة", canvas.width / 2, 115);
-
-        ctx.strokeStyle = "#b8860b";
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(140, 135);
-        ctx.lineTo(canvas.width - 140, 135);
-        ctx.stroke();
-
-        ctx.fillStyle = "#0d1b2a";
-        ctx.font = "bold 52px 'Amiri', serif";
-        ctx.fillText(book.titleAr || book.title, canvas.width / 2, 280);
-
-        ctx.fillStyle = "#1b4965";
-        ctx.font = "bold 32px 'Amiri', serif";
-        ctx.fillText(`المؤلف: ${book.authorAr || book.author}   •   سنة النشر: ${book.year} م`, canvas.width / 2, 360);
-
-        // Arabic Synopsis
-        ctx.fillStyle = "#b8860b";
-        ctx.font = "bold 32px 'Amiri', serif";
-        ctx.textAlign = "right";
-        ctx.fillText("الرؤية والتحليل السردي للعمل:", canvas.width - 120, 480);
-
-        ctx.fillStyle = "#1e293b";
-        ctx.font = "26px 'Amiri', serif";
-
-        function wrapText(text, x, y, maxWidth, lineHeight) {
-          const words = text.split(' ');
-          let line = '';
-          for (let n = 0; n < words.length; n++) {
-            const testLine = line + words[n] + ' ';
-            const testWidth = ctx.measureText(testLine).width;
-            if (testWidth > maxWidth && n > 0) {
-              ctx.fillText(line.trim(), x, y);
-              line = words[n] + ' ';
-              y += lineHeight;
-            } else {
-              line = testLine;
-            }
-          }
-          ctx.fillText(line.trim(), x, y);
-          return y;
-        }
-
-        let curY = wrapText(book.descAr || book.desc, canvas.width - 120, 540, canvas.width - 240, 48);
-
-        // Insight Box
-        const boxY = Math.max(curY + 60, 780);
-        ctx.fillStyle = "#fef3c7";
-        ctx.strokeStyle = "#b8860b";
-        ctx.lineWidth = 2;
-        ctx.fillRect(120, boxY, canvas.width - 240, 240);
-        ctx.strokeRect(120, boxY, canvas.width - 240, 240);
-
-        ctx.fillStyle = "#b8860b";
-        ctx.font = "bold 28px 'Amiri', serif";
-        ctx.textAlign = "center";
-        ctx.fillText("الجوهر الفلسفي والحكمة الإمبراطورية:", canvas.width / 2, boxY + 65);
-
-        ctx.fillStyle = "#0d1b2a";
-        ctx.font = "italic bold 28px 'Amiri', serif";
-        wrapText(`"${book.insightAr || book.insight}"`, canvas.width / 2 + 350, boxY + 130, canvas.width - 320, 46);
-
-        // Footer
-        ctx.fillStyle = "#64748b";
-        ctx.font = "20px 'Amiri', serif";
-        ctx.textAlign = "center";
-        ctx.fillText("المكتبة الإمبراطورية الكبرى • محفوظة لطلاب الأدب والباحثين", canvas.width / 2, canvas.height - 85);
-
-        const imgData = canvas.toDataURL('image/jpeg', 0.95);
-        pdf.addImage(imgData, 'JPEG', 0, 0, 210, 297);
-
-        const cleanTitle = (book.titleAr || book.title).replace(/[^a-zA-Z0-9\u0600-\u06FF]/g, '_');
-        pdf.save(`${cleanTitle}_النسخة_الإمبراطورية.pdf`);
-      }
     }
 
     function setBookStatus(id, status) {
@@ -1994,6 +1040,20 @@ Replace the entire contents of your `index.html` on GitHub with this code:
         renderLibrary();
         window.scrollTo({ top: 350, behavior: 'smooth' });
       }
+    }
+
+    function openReader(bookId) {
+      const book = ALL_2500_BOOKS.find(b => b.id === bookId);
+      if (!book) return;
+
+      const isAr = (currentLang === 'ar');
+      document.getElementById('modalBookTitle').innerText = isAr ? (book.titleAr || book.title) : book.title;
+      document.getElementById('modalBookContent').innerText = isAr ? (book.textAr || book.textEn) : book.textEn;
+      document.getElementById('readerModal').classList.add('active');
+    }
+
+    function closeReader() {
+      document.getElementById('readerModal').classList.remove('active');
     }
 
     document.addEventListener('DOMContentLoaded', () => {
