@@ -4,7 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Grand Imperial Library | 2,500 World Literature Masterpieces</title>
+  
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- jsPDF Engine for Instant PDF Generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
   <style>
     :root {
       --bg-cream: #faf7f0;
@@ -321,7 +327,7 @@
       letter-spacing: 0.5px;
     }
 
-    /* Actions Row: Download & Read Links */
+    /* Actions Row: Real PDF Download & Archive Link */
     .actions-container {
       display: flex;
       gap: 0.6rem;
@@ -757,7 +763,7 @@
 
       paginatedBooks.forEach(book => {
         const savedStatus = localStorage.getItem(`lib_status_${book.id}`) || 'unread';
-        const gutenbergQuery = encodeURIComponent(`${book.title} ${book.author}`);
+        const archiveQuery = encodeURIComponent(`${book.title} ${book.author}`);
 
         const card = document.createElement('div');
         card.className = 'card';
@@ -778,11 +784,11 @@
 
             <!-- Download & Read Action Buttons -->
             <div class="actions-container">
-              <button class="action-btn btn-download" onclick="downloadBook('${book.id}')">
-                📥 Download eBook
+              <button class="action-btn btn-download" onclick="downloadBookPDF('${book.id}')">
+                📥 Download PDF
               </button>
-              <a class="action-btn btn-online" href="https://www.gutenberg.org/ebooks/search/?query=${gutenbergQuery}" target="_blank" rel="noopener">
-                🌐 Read Online
+              <a class="action-btn btn-online" href="https://archive.org/search.php?query=${archiveQuery}&and[]=mediatype%3A%22texts%22" target="_blank" rel="noopener">
+                📖 Full Book PDF
               </a>
             </div>
           </div>
@@ -810,52 +816,133 @@
       updateStats();
     }
 
-    // Instant eBook Download Function
-    function downloadBook(bookId) {
+    // High Quality Royal PDF Document Generator
+    function downloadBookPDF(bookId) {
       const book = ALL_2500_BOOKS.find(b => b.id === bookId);
       if (!book) return;
 
-      const fileContent = `=====================================================
-THE GRAND IMPERIAL LIBRARY OF WORLD LITERATURE
-=====================================================
+      if (!window.jspdf) {
+        alert("PDF generator is loading. Please check your internet connection.");
+        return;
+      }
 
-TITLE: ${book.title.toUpperCase()}
-AUTHOR: ${book.author}
-HISTORICAL PERIOD / YEAR: ${book.year}
-CATEGORY: ${book.cat.toUpperCase()}
-THEMATIC FOCUS: ${book.meta}
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4'
+      });
 
------------------------------------------------------
-SYNOPSIS & ARCHIVAL RECORD
------------------------------------------------------
-${book.desc}
+      const pageWidth = doc.internal.pageSize.getWidth();
+      const pageHeight = doc.internal.pageSize.getHeight();
 
------------------------------------------------------
-PHILOSOPHICAL INSIGHT & CRITICAL MAXIM
------------------------------------------------------
-${book.insight}
+      // Royal Parchment Background Fill
+      doc.setFillColor(250, 247, 240);
+      doc.rect(0, 0, pageWidth, pageHeight, 'F');
 
------------------------------------------------------
-PRESERVATION & READING NOTES
------------------------------------------------------
-This digital edition is preserved in The Grand Imperial Library.
-To access complete unabridged original public domain texts, translations,
-and audio editions of ${book.author}'s complete canon, you may also visit
-the Project Gutenberg Archives or Internet Archive.
+      // Outer Gold Border
+      doc.setDrawColor(184, 134, 11);
+      doc.setLineWidth(1.5);
+      doc.rect(12, 12, pageWidth - 24, pageHeight - 24);
 
-Permanent Archive ID: ${book.id}
-Generated from The Grand Imperial Library System.
-=====================================================`;
+      // Inner Fine Gold Line
+      doc.setLineWidth(0.4);
+      doc.rect(14.5, 14.5, pageWidth - 29, pageHeight - 29);
 
-      const blob = new Blob([fileContent], { type: 'text/plain;charset=utf-8' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = `${book.title.replace(/[^a-zA-Z0-9]/g, '_')}_Imperial_Edition.txt`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(url);
+      // Top Emblem
+      doc.setFont('times', 'bold');
+      doc.setFontSize(10);
+      doc.setTextColor(184, 134, 11);
+      doc.text("THE GRAND IMPERIAL LIBRARY OF WORLD LITERATURE", pageWidth / 2, 24, { align: "center" });
+
+      doc.setDrawColor(184, 134, 11);
+      doc.setLineWidth(0.5);
+      doc.line(35, 27, pageWidth - 35, 27);
+
+      // Book Title
+      doc.setFont('times', 'bold');
+      doc.setFontSize(22);
+      doc.setTextColor(13, 27, 42); // Royal Navy
+      const titleLines = doc.splitTextToSize(book.title.toUpperCase(), pageWidth - 50);
+      doc.text(titleLines, pageWidth / 2, 40, { align: "center" });
+
+      let yPos = 40 + (titleLines.length * 9);
+
+      // Author & Era
+      doc.setFont('times', 'italic');
+      doc.setFontSize(14);
+      doc.setTextColor(27, 73, 101); // Royal Blue
+      doc.text(`By ${book.author}   •   Circa ${book.year}`, pageWidth / 2, yPos, { align: "center" });
+      yPos += 8;
+
+      // Metadata Tag
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(8.5);
+      doc.setTextColor(184, 134, 11);
+      doc.text(`CATEGORY: ${book.cat.toUpperCase()}   |   THEMATIC FOCUS: ${book.meta.toUpperCase()}`, pageWidth / 2, yPos, { align: "center" });
+      yPos += 12;
+
+      // Divider
+      doc.setDrawColor(212, 175, 55);
+      doc.setLineWidth(0.5);
+      doc.line(25, yPos, pageWidth - 25, yPos);
+      yPos += 12;
+
+      // Section 1: Synopsis
+      doc.setFont('times', 'bold');
+      doc.setFontSize(13);
+      doc.setTextColor(13, 27, 42);
+      doc.text("HISTORICAL SYNOPSIS & ARCHIVAL RECORD", 25, yPos);
+      yPos += 7;
+
+      doc.setFont('times', 'normal');
+      doc.setFontSize(11);
+      doc.setTextColor(30, 41, 59);
+      const descLines = doc.splitTextToSize(book.desc, pageWidth - 50);
+      doc.text(descLines, 25, yPos);
+      yPos += (descLines.length * 6) + 14;
+
+      // Section 2: Philosophical Insight Box
+      doc.setFillColor(254, 243, 199); // Soft Gold Box
+      doc.setDrawColor(184, 134, 11);
+      doc.setLineWidth(0.8);
+      doc.rect(23, yPos - 5, pageWidth - 46, 32, 'FD');
+
+      doc.setFont('times', 'bold');
+      doc.setFontSize(11);
+      doc.setTextColor(184, 134, 11);
+      doc.text("IMPERIAL PHILOSOPHICAL INSIGHT", 28, yPos + 2);
+
+      doc.setFont('times', 'italic');
+      doc.setFontSize(11);
+      doc.setTextColor(13, 27, 42);
+      const insightLines = doc.splitTextToSize(`"${book.insight}"`, pageWidth - 56);
+      doc.text(insightLines, 28, yPos + 10);
+      yPos += 42;
+
+      // Section 3: Preservation & Citation Notice
+      doc.setFont('times', 'bold');
+      doc.setFontSize(12);
+      doc.setTextColor(13, 27, 42);
+      doc.text("CANONICAL CITATION & UNABRIDGED ACCESS", 25, yPos);
+      yPos += 6;
+
+      doc.setFont('times', 'normal');
+      doc.setFontSize(9.5);
+      doc.setTextColor(71, 85, 105);
+      const citationText = `This folio is archived under Permanent Index ID: ${book.id} in The Grand Imperial Library. You can obtain original scanned manuscripts, unabridged public-domain PDF scans, and multilingual audio editions of ${book.author}'s canon through the Internet Archive and Project Gutenberg digital repositories.`;
+      const citationLines = doc.splitTextToSize(citationText, pageWidth - 50);
+      doc.text(citationLines, 25, yPos);
+
+      // Bottom Royal Seal Footer
+      doc.setFont('times', 'italic');
+      doc.setFontSize(9);
+      doc.setTextColor(148, 163, 184);
+      doc.text("The Grand Imperial Library • Preserved for Scholars & Bibliophiles Worldwide", pageWidth / 2, pageHeight - 18, { align: "center" });
+
+      // Save and trigger true PDF file download
+      const cleanFilename = book.title.replace(/[^a-zA-Z0-9]/g, '_');
+      doc.save(`${cleanFilename}_Imperial_Edition.pdf`);
     }
 
     function setBookStatus(id, status) {
@@ -872,7 +959,7 @@ Generated from The Grand Imperial Library System.
       
       updateStats();
 
-      // If viewing a filtered shelf, re-render to reflect the change
+      // If currently on a filtered shelf, re-render to reflect removal/addition
       if (currentStatus !== 'all') {
         renderLibrary();
       }
