@@ -140,34 +140,96 @@
       box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
     }
 
+    /* Personal Shelf Reading Status Filter Tabs */
+    .shelf-filter-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      color: var(--royal-navy);
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: -0.5rem;
+    }
+
+    .shelf-tabs {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .shelf-btn {
+      background: #ffffff;
+      border: 1.5px solid var(--gold-border);
+      color: var(--royal-navy);
+      padding: 0.7rem 1.6rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 700;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.5px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(13, 27, 42, 0.04);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .shelf-btn .badge {
+      background: var(--gold-soft);
+      color: var(--royal-navy);
+      padding: 0.15rem 0.55rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-family: monospace;
+      font-weight: 800;
+      border: 1px solid var(--gold-border);
+    }
+
+    .shelf-btn:hover, .shelf-btn.active {
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright));
+      color: #ffffff;
+      border-color: var(--gold-bright);
+      box-shadow: 0 6px 18px rgba(184, 134, 11, 0.35);
+      transform: translateY(-2px);
+    }
+
+    .shelf-btn.active .badge {
+      background: #ffffff;
+      color: var(--royal-navy);
+    }
+
+    /* Category Filter Tabs */
     .category-tabs {
       display: flex;
       gap: 0.6rem;
       flex-wrap: wrap;
       justify-content: center;
+      border-top: 1px dashed rgba(184, 134, 11, 0.3);
+      padding-top: 1.2rem;
     }
 
     .tab-btn {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.8);
       border: 1.5px solid var(--gold-border);
       color: var(--royal-navy);
-      padding: 0.65rem 1.4rem;
+      padding: 0.55rem 1.2rem;
       border-radius: 30px;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 600;
       font-family: 'Cinzel', serif;
       letter-spacing: 0.5px;
       transition: all 0.25s ease;
-      box-shadow: 0 4px 10px rgba(13, 27, 42, 0.03);
     }
 
     .tab-btn:hover, .tab-btn.active {
-      background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright));
-      color: #ffffff;
-      border-color: var(--gold-bright);
-      box-shadow: 0 6px 16px rgba(184, 134, 11, 0.35);
-      transform: translateY(-2px);
+      background: var(--royal-navy);
+      color: var(--gold-bright);
+      border-color: var(--royal-navy);
+      box-shadow: 0 4px 12px rgba(13, 27, 42, 0.2);
     }
 
     /* Books Showcase Grid */
@@ -175,7 +237,7 @@
       max-width: 1400px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
       gap: 2rem;
     }
 
@@ -257,6 +319,53 @@
       font-family: 'Cinzel', serif;
       font-size: 0.85rem;
       letter-spacing: 0.5px;
+    }
+
+    /* Actions Row: Download & Read Links */
+    .actions-container {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .action-btn {
+      flex: 1;
+      padding: 0.65rem 0.8rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .btn-download {
+      background: linear-gradient(135deg, #b8860b, #d4af37);
+      color: #ffffff;
+      border: none;
+      box-shadow: 0 3px 10px rgba(184, 134, 11, 0.25);
+    }
+
+    .btn-download:hover {
+      box-shadow: 0 6px 16px rgba(184, 134, 11, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .btn-online {
+      background: #ffffff;
+      color: var(--royal-navy);
+      border: 1.5px solid var(--gold-border);
+    }
+
+    .btn-online:hover {
+      background: var(--gold-soft);
+      border-color: var(--gold-primary);
     }
 
     /* Reading Status Controls */
@@ -403,8 +512,26 @@
   <div class="controls">
     <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search through all 2,500 books by title, author, concept, or year..." oninput="handleSearch()">
     
+    <!-- My Royal Bookshelf Status Filter -->
+    <div class="shelf-filter-title">My Royal Bookshelf Filters</div>
+    <div class="shelf-tabs">
+      <button class="shelf-btn active" onclick="filterStatus('all', this)">
+        <span>🏛️ All Catalog</span> <span class="badge" id="badgeAll">2500</span>
+      </button>
+      <button class="shelf-btn" onclick="filterStatus('read', this)">
+        <span>✅ Finished Reading</span> <span class="badge" id="badgeRead">0</span>
+      </button>
+      <button class="shelf-btn" onclick="filterStatus('reading', this)">
+        <span>📖 Currently Reading</span> <span class="badge" id="badgeReading">0</span>
+      </button>
+      <button class="shelf-btn" onclick="filterStatus('unread', this)">
+        <span>⏳ Want to Read / Unread</span> <span class="badge" id="badgeUnread">2500</span>
+      </button>
+    </div>
+
+    <!-- Category Filter Tabs -->
     <div class="category-tabs">
-      <button class="tab-btn active" onclick="filterCategory('all', this)">All Masterpieces (2,500)</button>
+      <button class="tab-btn active" onclick="filterCategory('all', this)">All Categories</button>
       <button class="tab-btn" onclick="filterCategory('dostoevsky', this)">Fyodor Dostoevsky</button>
       <button class="tab-btn" onclick="filterCategory('russian', this)">Russian Literature</button>
       <button class="tab-btn" onclick="filterCategory('philosophy', this)">Philosophy & Existentialism</button>
@@ -587,17 +714,23 @@
     const ALL_2500_BOOKS = build2500Library();
 
     // App State Management
-    let currentFilter = 'all';
+    let currentCategory = 'all';
+    let currentStatus = 'all';
     let searchQuery = '';
     let currentPage = 1;
     const pageSize = 25;
 
     function getFilteredBooks() {
       return ALL_2500_BOOKS.filter(b => {
-        const matchesCategory = (currentFilter === 'all' || b.cat === currentFilter);
+        const matchesCategory = (currentCategory === 'all' || b.cat === currentCategory);
+        
+        const savedStatus = localStorage.getItem(`lib_status_${b.id}`) || 'unread';
+        const matchesStatus = (currentStatus === 'all' || savedStatus === currentStatus);
+
         const searchCorpus = `${b.title} ${b.author} ${b.meta} ${b.desc} ${b.insight} ${b.year}`.toLowerCase();
         const matchesSearch = searchCorpus.includes(searchQuery.toLowerCase().trim());
-        return matchesCategory && matchesSearch;
+
+        return matchesCategory && matchesStatus && matchesSearch;
       });
     }
 
@@ -617,13 +750,14 @@
       if (paginatedBooks.length === 0) {
         grid.innerHTML = `
           <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem; color: var(--text-muted); font-size: 1.25rem; font-family: 'Cinzel', serif;">
-            No masterworks found matching your inquiry. Try another search term! 🔍
+            No masterworks found matching your active shelf or category filters. 🔍
           </div>
         `;
       }
 
       paginatedBooks.forEach(book => {
         const savedStatus = localStorage.getItem(`lib_status_${book.id}`) || 'unread';
+        const gutenbergQuery = encodeURIComponent(`${book.title} ${book.author}`);
 
         const card = document.createElement('div');
         card.className = 'card';
@@ -641,7 +775,19 @@
               <strong>Imperial Insight</strong>
               ${book.insight}
             </div>
+
+            <!-- Download & Read Action Buttons -->
+            <div class="actions-container">
+              <button class="action-btn btn-download" onclick="downloadBook('${book.id}')">
+                📥 Download eBook
+              </button>
+              <a class="action-btn btn-online" href="https://www.gutenberg.org/ebooks/search/?query=${gutenbergQuery}" target="_blank" rel="noopener">
+                🌐 Read Online
+              </a>
+            </div>
           </div>
+
+          <!-- Reading Status Buttons -->
           <div class="status-container">
             <button class="status-btn ${savedStatus === 'read' ? 'active-read' : ''}" onclick="setBookStatus('${book.id}', 'read')">Read ✅</button>
             <button class="status-btn ${savedStatus === 'reading' ? 'active-reading' : ''}" onclick="setBookStatus('${book.id}', 'reading')">Reading 📖</button>
@@ -664,6 +810,54 @@
       updateStats();
     }
 
+    // Instant eBook Download Function
+    function downloadBook(bookId) {
+      const book = ALL_2500_BOOKS.find(b => b.id === bookId);
+      if (!book) return;
+
+      const fileContent = `=====================================================
+THE GRAND IMPERIAL LIBRARY OF WORLD LITERATURE
+=====================================================
+
+TITLE: ${book.title.toUpperCase()}
+AUTHOR: ${book.author}
+HISTORICAL PERIOD / YEAR: ${book.year}
+CATEGORY: ${book.cat.toUpperCase()}
+THEMATIC FOCUS: ${book.meta}
+
+-----------------------------------------------------
+SYNOPSIS & ARCHIVAL RECORD
+-----------------------------------------------------
+${book.desc}
+
+-----------------------------------------------------
+PHILOSOPHICAL INSIGHT & CRITICAL MAXIM
+-----------------------------------------------------
+${book.insight}
+
+-----------------------------------------------------
+PRESERVATION & READING NOTES
+-----------------------------------------------------
+This digital edition is preserved in The Grand Imperial Library.
+To access complete unabridged original public domain texts, translations,
+and audio editions of ${book.author}'s complete canon, you may also visit
+the Project Gutenberg Archives or Internet Archive.
+
+Permanent Archive ID: ${book.id}
+Generated from The Grand Imperial Library System.
+=====================================================`;
+
+      const blob = new Blob([fileContent], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${book.title.replace(/[^a-zA-Z0-9]/g, '_')}_Imperial_Edition.txt`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
+
     function setBookStatus(id, status) {
       localStorage.setItem(`lib_status_${id}`, status);
       
@@ -677,6 +871,11 @@
       }
       
       updateStats();
+
+      // If viewing a filtered shelf, re-render to reflect the change
+      if (currentStatus !== 'all') {
+        renderLibrary();
+      }
     }
 
     function updateStats() {
@@ -691,14 +890,29 @@
         else unread++;
       });
 
+      // Header numbers
       document.getElementById('totalBooksCount').innerText = ALL_2500_BOOKS.length;
       document.getElementById('readCount').innerText = read;
       document.getElementById('readingCount').innerText = reading;
       document.getElementById('unreadCount').innerText = unread;
+
+      // Shelf badges
+      document.getElementById('badgeAll').innerText = ALL_2500_BOOKS.length;
+      document.getElementById('badgeRead').innerText = read;
+      document.getElementById('badgeReading').innerText = reading;
+      document.getElementById('badgeUnread').innerText = unread;
+    }
+
+    function filterStatus(status, btn) {
+      currentStatus = status;
+      currentPage = 1;
+      document.querySelectorAll('.shelf-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderLibrary();
     }
 
     function filterCategory(cat, btn) {
-      currentFilter = cat;
+      currentCategory = cat;
       currentPage = 1;
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
