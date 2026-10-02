@@ -360,30 +360,54 @@
       letter-spacing: 0.5px;
     }
 
-    .btn-read-online {
-      background: linear-gradient(135deg, #0d1b2a, #1b4965);
-      color: #ffffff;
-      border: 1px solid var(--gold-border);
-      padding: 0.8rem;
+    /* Actions: Archive.org Download Buttons */
+    .actions-container {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .action-btn {
+      flex: 1;
+      min-width: 140px;
+      padding: 0.75rem 0.8rem;
       border-radius: 10px;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 700;
       cursor: pointer;
       text-align: center;
-      display: flex;
+      border: none;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
       transition: all 0.2s ease;
-      margin-bottom: 1.2rem;
-      box-shadow: 0 3px 10px rgba(13, 27, 42, 0.15);
       font-family: inherit;
+      text-decoration: none;
     }
 
-    .btn-read-online:hover {
+    .btn-archive-en {
+      background: linear-gradient(135deg, #0d1b2a, #1b4965);
+      color: #ffffff;
+      box-shadow: 0 3px 10px rgba(13, 27, 42, 0.2);
+    }
+
+    .btn-archive-en:hover {
       box-shadow: 0 6px 16px rgba(13, 27, 42, 0.35);
       transform: translateY(-2px);
       color: var(--gold-bright);
+    }
+
+    .btn-archive-ar {
+      background: linear-gradient(135deg, #b8860b, #d4af37);
+      color: #ffffff;
+      box-shadow: 0 3px 10px rgba(184, 134, 11, 0.25);
+    }
+
+    .btn-archive-ar:hover {
+      box-shadow: 0 6px 16px rgba(184, 134, 11, 0.4);
+      transform: translateY(-2px);
     }
 
     .status-container {
@@ -509,77 +533,6 @@
       font-family: 'Cinzel', 'Amiri', serif;
       letter-spacing: 1px;
     }
-
-    /* Full-Screen In-App Reader Modal */
-    .reader-modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(13, 27, 42, 0.85);
-      backdrop-filter: blur(8px);
-      z-index: 9999;
-      justify-content: center;
-      align-items: center;
-      padding: 1.5rem;
-    }
-
-    .reader-modal.active {
-      display: flex;
-    }
-
-    .reader-box {
-      background: #faf7f0;
-      border: 2px solid var(--gold-border);
-      border-radius: 20px;
-      width: 100%;
-      max-width: 900px;
-      max-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
-      overflow: hidden;
-    }
-
-    .reader-header {
-      padding: 1.2rem 1.8rem;
-      background: #ffffff;
-      border-bottom: 2px solid var(--gold-border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .reader-title {
-      font-family: 'Cinzel', 'Amiri', serif;
-      font-size: 1.4rem;
-      color: var(--royal-navy);
-      font-weight: 800;
-    }
-
-    .reader-close {
-      background: none;
-      border: none;
-      font-size: 1.8rem;
-      cursor: pointer;
-      color: var(--royal-navy);
-      transition: color 0.2s;
-    }
-
-    .reader-close:hover {
-      color: #ef4444;
-    }
-
-    .reader-content {
-      padding: 2.5rem;
-      overflow-y: auto;
-      font-size: 1.15rem;
-      line-height: 2;
-      color: #1e293b;
-      white-space: pre-line;
-    }
   </style>
 </head>
 <body>
@@ -639,18 +592,7 @@
   </div>
 
   <div class="footer-note">
-    <p id="uiFooterNote">The Grand Imperial Library • All reading progress and on-site books are saved locally on your computer 🏛✨</p>
-  </div>
-
-  <!-- On-Site Reader Modal -->
-  <div class="reader-modal" id="readerModal">
-    <div class="reader-box">
-      <div class="reader-header">
-        <div class="reader-title" id="modalBookTitle">Book Title</div>
-        <button class="reader-close" onclick="closeReader()">✕</button>
-      </div>
-      <div class="reader-content" id="modalBookContent"></div>
-    </div>
+    <p id="uiFooterNote">The Grand Imperial Library • Download complete works directly from Archive.org 🏛✨</p>
   </div>
 
   <script>
@@ -665,8 +607,8 @@
         descAr: "راسبولينيكوف يرتكب جريمة قتل بناءً على نظريته الفوقية بأن العباقرة فوق القانون، ليدخل في عذاب ضمير مدمر يقوده إلى رحلة الاعتراف والتوبة في سيبيريا.",
         insight: "True punishment is not institutional confinement, but the unbearable psychological isolation from the human race.",
         insightAr: "العقاب الحقيقي ليس قيود السجن وقوانينه، بل العزلة النفسية المرعبة والانفصال القاتل عن البشرية.",
-        textEn: "PART I — CHAPTER I\n\nOn an exceptionally hot evening early in July a young man came out of the garret in which he lodged in S. Place and walked slowly, as though in hesitation, towards K. bridge.\n\nHe had successfully avoided meeting his landlady on the stairs. His garret was under the roof of a high, five-storied house and was more like a cupboard than a room. The landlady who provided him with garret, dinners, and attendance, lived on the floor below, and every time he went out he was obliged to pass her kitchen, the door of which invariably stood open. And each time, as he passed, the young man had a sick, frightened feeling, which made him scowl and feel ashamed. He was hopelessly in debt to his landlady, and was afraid of meeting her.\n\n'I want to attempt a thing like that and am frightened by these trifles,' he thought, with an odd smile. 'Hm... yes, all is in a man’s hands and he lets it all slip from cowardice... that’s an axiom. It would be interesting to know what it is men are most afraid of. Taking a new step, uttering a new word is what they fear most...'\n\nHe had not far to go; he knew indeed how many steps it was from the gate of his lodging house: exactly seven hundred and thirty. He had counted them once when he had been walking and lost in dreams.",
-        textAr: "الجزء الأول — الفصل الأول\n\nفي أوائل شهر يوليو، وفي وقت شديد القيظ من المساء، غادر شاب غرفته الصغيرة الواقعة تحت السقف في زقاق 'س'، وسار متمهلاً نحو جسر 'ك'، وكأنه يتردد في خطاه.\n\nوقد نجح في تفادي لقاء صاحب البيت على الدرج. كانت غرفته الصغيرة تقع تحت سقف بناية عالية مؤلفة من خمس طبقات، وكانت أشبه بخزانة منها بغرفة حقيقية. وكانت صاحبة البيت التي تمنحه هذه الغرفة والطعام والخدمة تقيم في الطابق الأسفل، فكان عليه في كل مرة يخرج فيها أن يمر أمام مطبخها الذي كان بابه مفتوحاً على الدوام. وفي كل مرة كان الشاب يمر به، كان يشعر بخوف مريض يملأه خجلاً؛ إذ كان مديناً لها بمبالغ طائلة ويخشى لقاءها.\n\nوحدث نفسه بابتسامة غريبة: 'أنا الذي أريد أن أقدم على هذا الأمر الخطير، وأخاف من هذه التوافه؟! نعم، كل شيء في يد الإنسان ولكنه يدعه يضيع من بين أصابعه بسبب الجبن... تلك حقيقة بديهية. وما الذي يخافه الناس أكثر من غيره؟ إنهم يخافون اتخاذ خطوة جديدة، أو النطق بكلمة جديدة!'"
+        archiveEn: "https://archive.org/details/crimeandpunishme00dostuoft",
+        archiveAr: "https://archive.org/search.php?query=%D8%A7%D9%84%D8%AC%D8%B1%D9%8A%D9%85%D8%A9+%D9%88%D8%A7%D9%84%D8%B9%D9%82%D8%A7%D8%A8+%D8%AF%D9%88%D8%B3%D8%AA%D9%88%D9%8A%D9%81%D8%B3%D9%83%D9%8A+mediatype%3Atexts"
       },
       {
         id: "b2", cat: "dostoevsky",
@@ -678,8 +620,8 @@
         descAr: "رواية فلسفية ملحمية تتناول الصراع الأخلاقي بين الشك والإيمان، والمسؤولية الجماعية عن الشر من خلال مصائر الإخوة ديمتري، إيفان، وأليوشا.",
         insight: "'If God does not exist, everything is permitted.' True transcendence lies in unconditional active love.",
         insightAr: "إن لم يكن الله موجوداً فكل شيء مباح. الخلاص البشري الحقيقي يكمن في المحبة الفعالة غير المشروطة.",
-        textEn: "BOOK V — CHAPTER V: THE GRAND INQUISITOR\n\n'Even this must have a preface,' Ivan laughed. 'My poem is in verse, if you will, but I’ll tell you the plot. The action takes place in Spain, in Seville, in the most terrible period of the Inquisition, when fires were lighted every day to the glory of God, and in the splendid auto-da-fé the wicked heretics were burnt.\n\nHe came softly, unobserved, and yet, strange to say, everyone recognized Him. The people are drawn to Him by an irresistible force, they gather round Him, they follow Him. He walks quietly among them with a gentle smile of infinite compassion. The sun of love burns in His heart, light and power shine from His eyes, and their radiance, shed on the people, stirs their hearts with responsive love.\n\nAt that moment the Grand Inquisitor, the Cardinal himself, enters the cathedral square. He is an old man, nearly ninety, tall and erect, with a withered face and sunken eyes, in which there is still a fiery gleam. He sees everything; his face darkens with sinister wrath. He points his finger, and commands the guards to seize Him.'",
-        textAr: "الكتاب الخامس — الفصل الخامس: المفتش الأكبر\n\nضحك إيفان وقال: 'حتى هذه الرواية بحاجة إلى مقدمة! تدور الحوادث في إسبانيا، في إشبيلية، في أرهب عصور محاكم التفتيش، حين كانت المحارق تُشعل كل يوم لمجد الله، ويُحرق الهراطقة في أعياد الإيمان المهيبة.\n\nونزل هو إلى الأرض بهدوء دون أن يراه أحد، ومع ذلك فقد عرفه الجميع في الحال! كان الناس ينجذبون إليه بقوة لا تقاوم، ويتحلقون حوله ويتبعونه. كان يمر بينهم بابتسامة هادئة تفيض رحمة لا نهائية، ونور المحبة يشع من عينيه ليلمس قلوب الحائرين.\n\nوفي تلك اللحظة بالذات، ظهر في ساحة الكاتدرائية الكاردينال المفتش الأكبر نفسه. شيخ ناهز التسعين، طويل القامة، وجهه منكمش وعيناه غائرتان ولكن يشتعل فيهما بريق يشبه الشرار. رأى كل شيء، فقطب حاجبيه بغضب صارم، وأشار بإصبعه إلى الحراس قائلاً: خذوه واقبضوا عليه!'"
+        archiveEn: "https://archive.org/details/brotherskaramazo00dostuoft",
+        archiveAr: "https://archive.org/search.php?query=%D8%A7%D9%84%D8%A5%D8%AE%D9%88%D8%A9+%D9%83%D8%A7%D8%B1%D8%A7%D9%85%D8%A7%D8%B2%D9%88%D9%81+%D8%AF%D9%88%D8%B3%D8%AA%D9%88%D9%8A%D9%81%D8%B3%D9%83%D9%8A+mediatype%3Atexts"
       },
       {
         id: "b3", cat: "dostoevsky",
@@ -691,8 +633,8 @@
         descAr: "الأمير ميشكين الطاهر العائد إلى بطرسبرغ يتعامل مع العالم ببراءة مطلقة وخير خالص، فيعتبره المجتمع الراقي معتوهاً ويقود صفاء روحه إلى مأساة.",
         insight: "Absolute moral goodness appears as foolishness to a world dominated by pride, avarice, and materialism.",
         insightAr: "الخير المطلق والنقاء الروحي يبدوان كحماقة في عالم يحكمه الجشع والمادة والمظاهر الزائفة.",
-        textEn: "PART I — CHAPTER I\n\nTowards the end of November, during a warm thaw, at around nine o'clock in the morning, a train of the Warsaw railway was approaching Petersburg at full speed. The morning was so damp and misty that it was only with great difficulty that the day succeeded in breaking; and it was impossible to see anything through the carriage windows beyond a few yards.\n\nIn one of the third-class compartments, two passengers found themselves seated facing each other near the window. Both were young men, both were simply dressed, and both were remarkable in appearance. One was Prince Lev Nikolayevich Myshkin, a young man of twenty-six, of middle height, with thick blond hair, hollow cheeks, and large gentle blue eyes.",
-        textAr: "الجزء الأول — الفصل الأول\n\nفي أواخر نوفمبر، وأثناء فترة ذوبان الجليد، وعند الساعة التاسعة صباحاً تقريباً، كان قطار سكة حديد وارسو يقترب من بطرسبرغ بأقصى سرعته. كان الطقس رطباً يلفه الضباب حتى كان من الصعب تمييز معالم الطريق من نوافذ العربات.\n\nوفي إحدى مقصورات الدرجة الثالثة، وجد راكبان نفسيهما جالسين وجهاً لوجه بجوار النافذة. كلاهما شاب في مقتبل العمر، وكلاهما بسيط الملبس ولكن ملامحهما كانت لافتة للنظر. أحدهما الأمير ليف نيكولايفيتش ميشكين، شاب في السادسة والعشرين، متوسط القامة، شعره أشقر وعيناه زرقاوان واسعتان تفيضان بطيبة ونقاء خالص."
+        archiveEn: "https://archive.org/details/idiotnovel00dostuoft",
+        archiveAr: "https://archive.org/search.php?query=%D8%A7%D9%84%D8%A3%D8%A8%D9%84%D9%87+%D8%AF%D9%88%D8%B3%D8%AA%D9%88%D9%8A%D9%81%D8%B3%D9%83%D9%8A+mediatype%3Atexts"
       },
       {
         id: "b4", cat: "dostoevsky",
@@ -704,8 +646,8 @@
         descAr: "اعترافات رجل القبو المعقد المنعزل الذي يتحدى النفعية والعقلانية الصارمة، مؤكداً أن الإنسان مستعد لتدمير كل رفاهية لحماية إرادته الحرة.",
         insight: "Human beings desire freedom and personal autonomy above calculated self-interest, even if that freedom leads to destruction.",
         insightAr: "الإنسان يفضل ممارسة إرادته الفردية الحرة على أي سعادة مادية مفروضة عليه حسابياً.",
-        textEn: "PART I — UNDERGROUND\n\nI am a sick man... I am a spiteful man. I am an unattractive man. I believe my liver is diseased. However, I know nothing at all about my disease, and do not know for certain what ails me. I don't consult a doctor for it, and never have, though I have a respect for medicine and doctors.\n\nBesides, I am extremely superstitious, sufficiently so to respect medicine, anyway. No, I refuse to consult a doctor from spite. That you probably will not understand. Well, I understand it, though. An intelligent man cannot become anything seriously, and it is only the fool who becomes anything.",
-        textAr: "الجزء الأول — القبو\n\nأنا رجل مريض... أنا رجل خبيث. أنا رجل منفر. وأظن أن كبدي مريضة. ومع ذلك، فأنا لا أفهم شيئاً عن مرضي، ولا أعرف على وجه اليقين ما الذي يؤلمني. ولا أستشير طبيباً ولن أستشيره أبداً، رغم احترامي للطب والأطباء.\n\nإن رفضي استشارة الطبيب نابع من العناد والغيظ الصرف. وأنتم بالتأكيد لن تفهموا هذا، لكني أفهمه جيداً. إن الإنسان الذكي المرهف لا يمكنه أن يصبح أي شيء على نحو قاطع في هذه الحياة؛ وحده الأحمق المغفل هو الذي يصبح شيئاً!"
+        archiveEn: "https://archive.org/details/notesfromundergr00dostuoft",
+        archiveAr: "https://archive.org/search.php?query=%D9%85%D8%B0%D9%83%D8%B1%D8%A7%D8%AA+%D9%82%D8%A8%D9%88+%D8%AF%D9%88%D8%B3%D8%AA%D9%88%D9%8A%D9%81%D8%B3%D9%83%D9%8A+mediatype%3Atexts"
       },
       {
         id: "b5", cat: "russian",
@@ -717,11 +659,24 @@
         descAr: "ملحمة الأدب الروسي الكبرى التي تسرد مصائر خمس عائلات نبيلة إبان حروب نابليون وتناقش فلسفة الإرادة والتاريخ.",
         insight: "History is not steered by legendary rulers alone, but by the countless microscopic decisions of everyday individuals.",
         insightAr: "التاريخ لا يصنعه القادة العظام وحدهم، بل هو محصلة ملايين الأفعال البشرية الصغيرة الصامتة.",
-        textEn: "BOOK I — CHAPTER I\n\n'Well, Prince, so Genoa and Lucca are now just family estates of the Buonapartes. But I warn you, if you don't tell me that this means war, if you still try to defend the infamies and horrors perpetrated by that Antichrist—I really believe he is Antichrist—I will have nothing more to do with you and you are no longer my friend!'\n\nIt was in July 1805, and the speaker was the well-known Anna Pavlovna Scherer, maid of honor and favorite of the Empress Marya Fedorovna. With these words she greeted Prince Vasili Kuragin, a man of high rank and importance, who was the first to arrive at her soiree.",
-        textAr: "الكتاب الأول — الفصل الأول\n\n'حسناً يا أمير، ها هي جنوة ولوكا تصبحان مجرد ضيعتين لعائلة بونابرت! لكني أحذرك: إن لم تقل لي إن هذه هي الحرب بعينها، وإن استمررت في الدفاع عن فظائع ذلك الدجال—وأنا مؤمنة بأنه المسيخ الدجال حقاً—فلن أعدّك صديقاً لي بعد اليوم!'\n\nكان ذلك في يوليو عام 1805، وكانت المتحدثة هي آنا بافلوفنا شيرر، وصيفة الإمبراطورة ماريا فيودوروفنا. وبهذه العبارات استقبلت الأمير فاسيلي كوراغين، وهو رجل ذو نفوذ ومكانة مرموقة وأول القادمين إلى أمسيتها الأرستقراطية."
+        archiveEn: "https://archive.org/details/warandpeace01tols",
+        archiveAr: "https://archive.org/search.php?query=%D8%A7%D9%84%D8%AD%D8%B1%D8%A8+%D9%88%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85+%D8%AA%D9%88%D9%84%D8%B3%D8%AA%D9%88%D9%8A+mediatype%3Atexts"
       },
       {
-        id: "b6", cat: "philosophy",
+        id: "b6", cat: "russian",
+        title: "Anna Karenina", titleAr: "آنا كارنينا",
+        author: "Leo Tolstoy", authorAr: "ليو تولستوي",
+        year: "1878",
+        meta: "Passion, Hypocrisy, & Society", metaAr: "العاطفة، الرياء، والقيود الاجتماعية",
+        desc: "An aristocratic woman abandons her respectable marriage for Count Vronsky, confronting the harsh double standards and moral judgment of imperial society.",
+        descAr: "مأساة امرأة نبيلة تتحدى تقاليد مجتمعها الأرستقراطي من أجل حب جارف، لتصطدم بازدواجية المعايير ونبذ المجتمع القاسي.",
+        insight: "'All happy families are alike; each unhappy family is unhappy in its own way.'",
+        insightAr: "كل العائلات السعيدة تتشابه في سعادتها، أما كل عائلة تعيسة فتعيسة بطريقتها الفريدة.",
+        archiveEn: "https://archive.org/details/annakarenina01garn",
+        archiveAr: "https://archive.org/search.php?query=%D8%A2%D9%86%D8%A7+%D9%83%D8%A7%D8%B1%D9%86%D9%8A%D9%86%D8%A7+%D8%AA%D9%88%D9%84%D8%B3%D8%AA%D9%88%D9%8A+mediatype%3Atexts"
+      },
+      {
+        id: "b7", cat: "philosophy",
         title: "The Metamorphosis", titleAr: "المسخ (التحول)",
         author: "Franz Kafka", authorAr: "فرانز كافكا",
         year: "1915",
@@ -730,8 +685,47 @@
         descAr: "يستيقظ غريغور سامسا ليجد نفسه قد تحول إلى حشرة مقززة، لتتكشف له قسوة عائلته التي كانت تتظاهر بحبه فقط لأنه مصدر رزقها.",
         insight: "When your economic utility expires, social and familial affection can vanish with terrifying speed.",
         insightAr: "حين تسقط قدرتك على الإنتاج المادي، يتلاشى تقدير أقرب الناس إليك بسرعة مرعبة.",
-        textEn: "CHAPTER I\n\nOne morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armor-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment.\n\n'What's happened to me?' he thought. It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls.",
-        textAr: "الفصل الأول\n\nاستيقظ غريغور سامسا ذات صباح من كوابيس مزعجة، ليجد نفسه قد تحول في فراشه إلى حشرة عملاقة ومقززة. كان مستلقياً على ظهره الصلب كدرع، وحين رفع رأسه قليلاً استطاع أن يرى بطنه البني المقبب، والمقسّم بأقواس إلى أجزاء صلبة. وكان الغطاء بالكاد يستقر فوقه، يوشك أن ينزلق في أي لحظة.\n\nفكر في نفسه: 'ما الذي حدث لي؟!' لم يكن ذلك حلماً على الإطلاق. فقد كانت غرفته، وهي غرفة بشرية حقيقية وإن بدت صغيرة، ترقد في هدوء بين جدرانها الأربعة المألوفة."
+        archiveEn: "https://archive.org/details/the-metamorphosis-franz-kafka",
+        archiveAr: "https://archive.org/search.php?query=%D8%A7%D9%84%D9%85%D8%B3%D8%AE+%D9%83%D8%A7%D9%81%D9%83%D8%A7+mediatype%3Atexts"
+      },
+      {
+        id: "b8", cat: "world",
+        title: "Les Misérables", titleAr: "البؤساء",
+        author: "Victor Hugo", authorAr: "فيكتور هوغو",
+        year: "1862",
+        meta: "Grace, Justice, & Social Inequality", metaAr: "العدالة، الرحمة، وبؤس المهمشين",
+        desc: "Jean Valjean's relentless journey from condemned convict to righteous benefactor, pursued across decades by the rigid inspector Javert.",
+        descAr: "الملحمة الإنسانية لجان فالجان وسعيه للتكفير عن ماضيه وفعل الخير وسط قسوة القوانين وظلم المجتمع الفرنسي للفقراء.",
+        insight: "'To love or have loved, that is enough. Ask nothing further. There is no other pearl to be found in the dark folds of life.'",
+        insightAr: "أن تُحب أو تكون محبوباً، ذلك وحده يكفي. لا تطلب شيئاً بعد ذلك من الحياة.",
+        archiveEn: "https://archive.org/details/lesmiserables01hugoiala",
+        archiveAr: "https://archive.org/search.php?query=%D8%A7%D9%84%D8%A8%D8%A4%D8%B3%D8%A7%D8%A1+%D9%81%D9%8A%D9%83%D8%AA%D9%88%D8%B1+%D9%87%D9%88%D8%BA%D9%88+mediatype%3Atexts"
+      },
+      {
+        id: "b9", cat: "dystopia",
+        title: "Nineteen Eighty-Four", titleAr: "1984",
+        author: "George Orwell", authorAr: "جورج أورويل",
+        year: "1949",
+        meta: "Totalitarian Surveillance & Doublespeak", metaAr: "الشمولية ورقابة الفكر واللغة",
+        desc: "Winston Smith lives under the omniscient surveillance of Big Brother and the Thought Police in a brutal state that rewrites truth itself.",
+        descAr: "وينستون سميث يحاول التمرد على نظام الأخ الأكبر الشمولي الذي يراقب الأنفاس ويزور التاريخ ويجرم التفكير الحر.",
+        insight: "Who controls the past controls the future; who controls the present controls the past.",
+        insightAr: "من يتحكم في الماضي يتحكم في المستقبل، ومن يتحكم في الحاضر يتحكم في الماضي.",
+        archiveEn: "https://archive.org/details/1984-george-orwell",
+        archiveAr: "https://archive.org/search.php?query=1984+%D8%AC%D9%88%D8%B1%D8%AC+%D8%A3%D9%88%D8%B1%D9%88%D9%8A%D9%84+mediatype%3Atexts"
+      },
+      {
+        id: "b10", cat: "arabic",
+        title: "The Cairo Trilogy", titleAr: "ثلاثية القاهرة",
+        author: "Naguib Mahfouz", authorAr: "نجيب محفوظ",
+        year: "1957",
+        meta: "Family Patriarchs & Modernity", metaAr: "التحولات الاجتماعية والأسرة المصرية",
+        desc: "The monumental epic following three generations of a traditional Cairo household during Egypt's tumultuous social and political awakening.",
+        descAr: "ملحمة أجيال عائلة السيد أحمد عبد الجواد عبر ثلاثة عقود، ترصد تحولات المجتمع المصري وصراع الأبناء بين التقاليد والحرية.",
+        insight: "Time is the ultimate sovereign ruler that dismantles every empire and softens every authoritarian will.",
+        insightAr: "الزمن هو الحاكم الفعلي الذي يغير كل الثوابت ويذيب جبروت السلاطين والأرباب.",
+        archiveEn: "https://archive.org/details/cairotrilogy00mahf",
+        archiveAr: "https://archive.org/search.php?query=%D8%AB%D9%84%D8%A7%D8%AB%D9%8A%D8%A9+%D8%A7%D9%84%D9%82%D8%A7%D9%87%D8%B1%D8%A9+%D9%86%D8%AC%D9%8A%D8%A8+%D9%85%D8%AD%D9%81%D9%88%D8%B8+mediatype%3Atexts"
       }
     ];
 
@@ -765,11 +759,14 @@
         const subTheme = volumeThemes[themeIndex];
         const calculatedYear = 1680 + (count % 270);
 
+        const titleEn = `${authorObj.name}: ${subTheme.en} (Vol. ${count})`;
+        const titleAr = `${authorObj.nameAr}: ${subTheme.ar} (المجلد ${count})`;
+
         fullList.push({
           id: `b${count}`,
           cat: authorObj.cat,
-          title: `${authorObj.name}: ${subTheme.en} (Vol. ${count})`,
-          titleAr: `${authorObj.nameAr}: ${subTheme.ar} (المجلد ${count})`,
+          title: titleEn,
+          titleAr: titleAr,
           author: authorObj.name,
           authorAr: authorObj.nameAr,
           year: `${calculatedYear}`,
@@ -779,8 +776,8 @@
           descAr: `عمل كلاسيكي أصيل للمؤلف ${authorObj.nameAr} يستقصي أسرار التجربة الإنسانية والمسؤولية الأخلاقية والوجودية.`,
           insight: authorObj.insight,
           insightAr: authorObj.insightAr,
-          textEn: `VOLUME ${count} — PROLOGUE\n\nThe exploration of human conscience in the works of ${authorObj.name} transcends temporal borders. Here, we encounter the primary ethical dilemma of existence: whether human will is bound to social conformity or capable of autonomous transcendence.\n\n"To seek truth is the highest endeavor," writes ${authorObj.name}. In this volume, the protagonist faces the inevitable clash between internal ideals and external reality.`,
-          textAr: `المجلد ${count} — المدخل الفلسفي\n\nإن استقصاء الضمير الإنساني في مؤلفات ${authorObj.nameAr} يتجاوز حدود الزمان والمكان. وهنا نقف أمام المعضلة الأخلاقية الكبرى في الوجود: هل إرادة الإنسان مقيدة بالأعراف السائدة، أم أنها قادرة على التحرر وبناء مصيرها المستقل؟\n\nيكتب ${authorObj.nameAr}: "إن البحث عن الحقيقة المجردة هو أسمى غايات الوجود البشري." وفي هذا العمل، يواجه البطل ذلك الصدام المحتوم بين مبادئه الروحية والواقع الاجتماعي.`
+          archiveEn: `https://archive.org/search.php?query=${encodeURIComponent(authorObj.name)}+mediatype%3Atexts`,
+          archiveAr: `https://archive.org/search.php?query=${encodeURIComponent(authorObj.nameAr)}+mediatype%3Atexts`
         });
         count++;
       }
@@ -842,7 +839,7 @@
       document.getElementById('prevBtn').innerText = isAr ? "التالي ◀" : "◀ Previous";
       document.getElementById('nextBtn').innerText = isAr ? "السابق ▶" : "Next ▶";
       document.getElementById('uiJumpTo').innerText = isAr ? "انتقال إلى صفحة:" : "Jump to:";
-      document.getElementById('uiFooterNote').innerText = isAr ? "المكتبة الإمبراطورية الكبرى • يتم حفظ تقدم قراءتك محلياً على جهازك 🏛✨" : "The Grand Imperial Library • All reading progress and on-site books are saved locally on your computer 🏛️✨";
+      document.getElementById('uiFooterNote').innerText = isAr ? "المكتبة الإمبراطورية الكبرى • تحميل الكتب كاملة مباشرة من أرشيف الإنترنت 🏛✨" : "The Grand Imperial Library • Download complete works directly from Archive.org 🏛✨";
     }
 
     function renderCategoryTabs() {
@@ -926,9 +923,14 @@
               ${displayInsight}
             </div>
 
-            <button class="btn-read-online" onclick="openReader('${book.id}')">
-              📖 ${isAr ? "قراءة العمل كاملاً بالموقع" : "Read Full Book On-Site"}
-            </button>
+            <div class="actions-container">
+              <a class="action-btn btn-archive-en" href="${book.archiveEn}" target="_blank" rel="noopener noreferrer">
+                🏛️ Download English (Archive)
+              </a>
+              <a class="action-btn btn-archive-ar" href="${book.archiveAr}" target="_blank" rel="noopener noreferrer">
+                🏛️ تحميل من الأرشيف (عربي)
+              </a>
+            </div>
           </div>
 
           <div class="status-container">
@@ -1040,20 +1042,6 @@
         renderLibrary();
         window.scrollTo({ top: 350, behavior: 'smooth' });
       }
-    }
-
-    function openReader(bookId) {
-      const book = ALL_2500_BOOKS.find(b => b.id === bookId);
-      if (!book) return;
-
-      const isAr = (currentLang === 'ar');
-      document.getElementById('modalBookTitle').innerText = isAr ? (book.titleAr || book.title) : book.title;
-      document.getElementById('modalBookContent').innerText = isAr ? (book.textAr || book.textEn) : book.textEn;
-      document.getElementById('readerModal').classList.add('active');
-    }
-
-    function closeReader() {
-      document.getElementById('readerModal').classList.remove('active');
     }
 
     document.addEventListener('DOMContentLoaded', () => {
